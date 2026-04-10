@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Message for you</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      padding: 50px;
+    }
+    .box {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="content">
+    Đang giải mã...
+  </div>
+
+  <script>
+    // 🔥 mở ngay (test)
+    const unlockDate = new Date("2026-04-10T00:00:00");
+
+    const tarotDeck = [
+      { name: "The Lovers", meaning: "Có sự kết nối sâu sắc, nhưng cần lựa chọn." },
+      { name: "Two of Cups", meaning: "Tình cảm hai chiều, có sự đồng điệu." },
+      { name: "The Tower", meaning: "Biến động bất ngờ, sự thật được phơi bày." },
+      { name: "The Star", meaning: "Hy vọng, chữa lành và niềm tin." },
+      { name: "Death", meaning: "Kết thúc để bắt đầu lại." },
+      { name: "Page of Cups", meaning: "Tình cảm nhẹ nhàng, lời nhắn dễ thương." },
+      { name: "Ten of Swords", meaning: "Đau nhưng là kết thúc cần thiết." }
+    ];
+
+    function getRandomCards() {
+      let shuffled = tarotDeck.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 3);
+    }
+
+    const content = document.getElementById("content");
+    const now = new Date();
+
+    if (now < unlockDate) {
+      content.innerHTML = `
+        <h2>⏳ Chưa tới thời điểm</h2>
+        <p>Đừng vội đọc...</p>
+      `;
+    } else {
+      const cards = getRandomCards();
+
+      content.innerHTML = `
+        <h2>🔮 Trải bài dành cho bạn</h2>
+        <p><b>${cards[0].name}</b>: ${cards[0].meaning}</p>
+        <p><b>${cards[1].name}</b>: ${cards[1].meaning}</p>
+        <p><b>${cards[2].name}</b>: ${cards[2].meaning}</p>
+        <br>
+        <p>✨ Thông điệp:</p>
+        <p>Không phải mọi thứ đến đều để ở lại, nhưng mọi thứ đều có lý do để xuất hiện.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
