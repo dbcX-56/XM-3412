@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>For you</title>
 
-  <!-- font đẹp -->
+  <!-- dbcM font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -23,17 +23,17 @@
       max-width: 650px;
       margin: auto;
       box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-      line-height: 1.7;
+      line-height: 1.8;
       text-align: left;
     }
 
     h3 {
-      margin-bottom: 15px;
       text-align: center;
+      margin-bottom: 15px;
     }
 
     p {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
   </style>
 </head>
@@ -43,9 +43,8 @@
 <div id="content">Đang mở...</div>
 
 <script>
-// 🔥 TEST NGAY HÔM NAY
-const unlockDate = new Date();
-unlockDate.setHours(0,0,0,0);
+// 🔒 unlock ngày 05/05/2026
+const unlockDate = new Date(2026, 4, 5);
 
 const now = new Date();
 const content = document.getElementById("content");
@@ -54,62 +53,59 @@ if (now < unlockDate) {
   content.innerHTML = `
     <div class="box">
       <h3>⏳ Chưa tới ngày</h3>
-      <p>Quay lại sau nha...</p>
+      <p>Hãy quay lại vào 05/05 nha...</p>
     </div>
   `;
 } else {
   content.innerHTML = `
     <div class="box">
 
-    <h3>💌 Mập đây,</h3>
+    <h3>💌</h3>
 
-    <p>Em viết những lời này vào những ngày trước ngày anh sẽ đọc được, nên mỗi ngày hãy mở 1 cái nha, vì đó đều là những gì em muốn nói với anh khi chúng ta không còn bên cạnh nhau nữa. 
-    Không biết sẽ kéo dài đến ngày thứ bao nhiêu, em ko rõ..</p>
+    <p>Hay thiệt, hôm qua em có một giấc mơ, trong đó có anh và em. Anh nhắn tin hỏi em liệu chúng ta có thể bỏ qua tất cả những điều trước đó để làm lại không. Em đồng ý rồi bật dậy, điều đầu tiên làm là lấy điện thoại để kiểm tra. Nhưng vẫn vậy đó… vẫn không có gì.</p>
 
-    <p><b>Em thương Anh.</b></p>
+    <p>Mai em thi rồi. Nhớ lúc trước anh nói đợt sau em thi sẽ chạy ra chơi với em. Nhưng giờ em cũng không còn được nhận điều đó nữa.</p>
 
-    <p>Hnay là 3 ngày anh xem tn của em nhưng ko tl.</p>
+    <p>Lần đầu tiên gặp anh, đối với em anh mang lại cảm giác ấm áp và vui vẻ. Nhưng nhìn anh cũng rất buồn, cảm giác anh ôm nhiều thứ một mình và không chia sẻ nhiều với ai. Mà đúng thiệt, vì thời gian qua bên nhau nhưng em cũng không là người lắng nghe anh nhiều… em xin lỗi.</p>
 
-    <p>Em đã đắn đo lúc làm cái này vì vốn dĩ em ko chắc mình có đủ can đảm để anh đọc dc ko.
-    Thật ra em định viết thư, nhưng điều đó thì hơi bất tiện cho anh nên em chuyển thành cái này vậy. Giỏi ko ?</p>
+    <p>Xịn hơi khó tính, đôi lúc không kiểm soát được sự tức giận của mình… phải thay đổi một chút đi nha. Vì sẽ tốt hơn cho công việc sau này của anh, cũng như còn P với M nữa mà.</p>
 
-    <p>Xịn của em rất giỏi, nhưng lại kém trong việc chia sẻ, em mong anh đừng tự ôm nhiều thứ một mình mà để bản thân bị gục ngã. Vì người đau lòng sẽ là em.</p>
+    <p>Cho dù anh có hơi lớn hơn em một chút nhưng em vẫn thấy chúng ta hợp nhau. Anh là người vui tính, ấm áp và chiều chuộng em, cũng là người cố gắng để trẻ trung hơn khi bên em… em thích điều đó lắm. Anh là người đã cho em sự an toàn, bình yên, và cũng là người rất quan trọng với em.</p>
 
-    <p>Chuyện cây bút, em đưa lại ko phải vì muốn trả đâu, vì nó hết mực rồi, nhưng em ko dám nói vs anh để fill lại. Vì sợ anh nói hết rồi thì e bỏ đi.
-    Vậy nên em mới để lại trong hộp bút của anh chứ ko phải để cạnh cái hộp. Hy vọng anh sẽ test thử và biết vì sao nó nằm ở đó.</p>
+    <p>Em thích anh vẽ, thích nét chữ của anh. Thích anh là người vui vẻ. Nhưng vì chúng ta đã từng bên nhau… nên điều em mong nhất là nếu có thể, anh vẫn sống hạnh phúc, vui vẻ và khỏe mạnh.</p>
 
-    <p>Hôm nay em có 1 snghi luôn quẩn quanh trong đầu, liệu rằng ngày hôm đó... nếu em gặp anh thì mọi chuyện có khác đi không...</p>
+    <p>Em vẫn còn nhớ lần đầu ra lấy ly nước anh mua… anh lúc đó vừa đẹp trai vừa ấm áp, tim em đập liên hồi và cười không lý do.</p>
 
-    <p>Anh biết ko, mỗi ngày đi làm em đều sợ ko nhìn thấy anh... nhưng ko thấy anh, em lại càng sợ hơn...</p>
+    <p>Em nhớ lúc anh cố gắng để hôn em… nhớ lúc tan làm tụi mình gặp nhau một chút… nhớ lúc em bye anh rồi đi ra vẫn thấy anh đứng đó chờ.</p>
 
-    <p>Em nhớ những lúc anh cười, những lúc anh vui vẻ và nhõng nhẽo bên em, em nhớ gương mặt anh lúc ngủ bình yên và cái ôm của anh.</p>
+    <p>Em nhớ lần em ngủ quên mà để anh đợi gần cả tiếng… nhớ lúc tụi mình đi làm nến cùng nhau vui như thế nào.</p>
 
-    <p><b>Em thương anh, Xịn của em.</b></p>
+    <p><b>Em nhớ tụi mình.</b></p>
 
-    <p>Em chưa bao giờ hối hận vì đã bên anh... nhưng cũng có những ngày em thấy việc sống thôi cũng khó khăn...</p>
+    <p>Em mong Xịn có thể chia sẻ nhiều hơn, nói ra nhiều hơn để nhẹ lòng hơn. Em cũng mong anh luôn khỏe mạnh… vì bên cạnh anh còn nhiều người cần anh lắm.</p>
 
-    <p>Em cố sống qua từng ngày... nhưng mỗi phút trôi qua đều dài và đau đớn.</p>
+    <p>Em chỉ mong anh vẫn sống bình thường, vui vẻ và hạnh phúc.</p>
 
-    <p>Em biết mình có thể trông thảm hại... nhưng em chỉ biết em cần anh.</p>
+    <p>Em từng nói bên anh có em là thật lòng… nhưng anh lại nói anh chỉ muốn một mình. Em đau lòng, nhưng cũng chấp nhận… vì ít nhất em biết được điều anh thật sự muốn.</p>
 
-    <p>Em xin lỗi vì đã không ngồi xuống và nói hết những điều trong anh trong suốt 2 năm đó.</p>
+    <p>Cho dù em làm gì, đi đâu… em vẫn thấy hình ảnh của anh. Em muốn thoát ra, nhưng em không biết cách.</p>
 
-    <p>Ngày 3/4... ngày anh cầm bó hoa đến... khiến em nhận ra mình cũng xứng đáng được yêu thương...</p>
+    <p>Tình yêu của tụi mình… thật sự rất đẹp. Đúng như anh nói, một mối quan hệ đẹp… nhưng không thể tiếp tục.</p>
 
-    <p>Em ước được gặp anh sớm hơn... được ở bên anh nhiều hơn...</p>
+    <p>Bên anh, em đã rất hạnh phúc. Những gì anh làm cho em… em đều cảm nhận được. Những lần cãi nhau… em không còn nhớ rõ nữa. Em chỉ nhớ tụi mình đã từng vui như thế nào.</p>
 
-    <p>Em vẫn thương anh... và sẽ thương anh mãi.</p>
+    <p>Em từng cố nghĩ về những điều tiêu cực để quên anh nhanh hơn… nhưng em không làm được. Vì những điều đẹp giữa tụi mình đáng giá hơn tất cả.</p>
 
-    <p>Em nhớ tay ấm của anh.</p>
+    <p>Em đã buồn rất nhiều… khi anh đi công tác mà em không biết anh đi đâu. Trước đây anh luôn nói với em mọi thứ… nhưng lần đó thì không. Em thấy trống rỗng.</p>
 
-    <p><b>Xịn của em</b></p>
+    <p><b>Em nhớ anh, rất nhiều.</b></p>
 
     </div>
   `;
 }
 </script>
 
-<!-- 🔥 TRACKING -->
+<!-- 🔥 tracking -->
 <script src="tracking.js"></script>
 
 </body>
