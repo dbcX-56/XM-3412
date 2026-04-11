@@ -1,28 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <title>For you</title>
 
-  <!-- font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
   <style>
-    <script>
-(function() {
-  const pageName = window.location.pathname.split("/").pop().replace(".html","");
-
-  fetch("https://script.google.com/macros/s/AKfycbxK7n2qDiqAPXkPmsJlQnwsoFVAq2oqjkNNyg8SPsgZxDh3Zlhxkpx5Zio0AQ3iHwKwjA/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      page: pageName,
-      time: new Date().toLocaleString()
-    })
-  });
-})();
-</script>
     body {
       background: #EAF4FB;
       color: #6B4F3A;
@@ -45,15 +29,17 @@
     }
   </style>
 </head>
+
 <body>
 
 <div id="content">Đang mở...</div>
 
-<!-- 👁 tracking -->
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=day4letter" style="display:none"/>
+<!-- 👁 tracking phụ (optional) -->
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=day1letter" style="display:none"/>
 
 <script>
-const unlockDate = new Date("2025-05-04T00:00:00");
+// 🔒 LOCK NGÀY
+const unlockDate = new Date("2026-05-04T00:00:00");
 const now = new Date();
 
 const content = document.getElementById("content");
@@ -71,41 +57,39 @@ if (now < unlockDate) {
 
     <h3>💌 Mập đây,</h3>
 
-    <p>Em viết những lời này vào những ngày trước ngày anh sẽ đọc được, nên mỗi ngày hãy mở 1 cái nha, vì đó đều là những gì em muốn nói với anh khi chúng ta không còn bên cạnh nhau nữa. 
-    Không biết sẽ kéo dài đến ngày thứ bao nhiêu, em ko rõ..</p>
+    <p>Em viết những lời này vào những ngày trước ngày anh sẽ đọc được...</p>
 
     <p><b>Em thương Anh.</b></p>
 
     <p>Hnay là 3 ngày anh xem tn của em nhưng ko tl.</p>
 
-    <p>Em đã đắn đo lúc làm cái này vì vốn dĩ em ko chắc mình có đủ can đảm để anh đọc dc ko.
-    Thật ra em định viết thư, nhưng điều đó thì hơi bất tiện cho anh nên em chuyển thành cái này vậy. Giỏi ko ?</p>
+    <p>Em đã đắn đo lúc làm cái này...</p>
 
-    <p>Xịn của em rất giỏi, nhưng lại kém trong việc chia sẻ, em mong anh đừng tự ôm nhiều thứ một mình mà để bản thân bị gục ngã. Vì người đau lòng sẽ là em.</p>
+    <p>Xịn của em rất giỏi nhưng lại kém chia sẻ...</p>
 
-    <p>Chuyện cây bút, em đưa lại ko phải vì muốn trả đâu, vì nó hết mực rồi, nhưng em ko dám nói vs anh để fill lại. Vì sợ anh nói hết rồi thì e bỏ đi.</p>
+    <p>Chuyện cây bút...</p>
 
-    <p>Hôm nay em có 1 snghi luôn quẩn quanh trong đầu... liệu rằng nếu em gặp anh lúc đó thì mọi chuyện có khác đi không...</p>
+    <p>Hôm nay em có 1 snghi luôn quẩn quanh...</p>
 
-    <p>Anh biết ko, mỗi ngày đi làm em đều sợ ko nhìn thấy anh... nhưng ko thấy anh, em lại càng sợ hơn...</p>
+    <p>Anh biết ko...</p>
 
-    <p>Em nhớ những lúc anh cười, những lúc anh vui vẻ, gương mặt anh lúc ngủ, cái ôm chặt và mùi của anh.</p>
+    <p>Em nhớ những lúc anh cười...</p>
 
     <p><b>Em thương anh, Xịn của em.</b></p>
 
-    <p>Em chưa bao giờ hối hận vì đã bên anh... nhưng cũng có những ngày em thấy việc sống thôi cũng khó khăn...</p>
+    <p>Em chưa bao giờ hối hận...</p>
 
-    <p>Em cố sống qua từng ngày, từng giờ... nhưng mỗi phút trôi qua đều dài và đau đớn.</p>
+    <p>Em cố sống qua từng ngày...</p>
 
-    <p>Em biết mình có thể trông thảm hại... nhưng em chỉ biết em cần anh.</p>
+    <p>Em biết mình có thể trông thảm hại...</p>
 
-    <p>Em xin lỗi vì đã không ngồi xuống và nói hết những điều trong anh trong suốt 2 năm đó.</p>
+    <p>Em xin lỗi...</p>
 
-    <p>Ngày 3/4... ngày anh cầm bó hoa đến... khiến em nhận ra mình cũng xứng đáng được yêu thương...</p>
+    <p>Ngày 3/4...</p>
 
-    <p>Em ước được gặp anh sớm hơn... được ở bên anh nhiều hơn...</p>
+    <p>Em ước được gặp anh sớm hơn...</p>
 
-    <p>Em vẫn thương anh... và sẽ thương anh mãi.</p>
+    <p>Em vẫn thương anh...</p>
 
     <p>Em nhớ tay ấm của anh.</p>
 
@@ -114,6 +98,20 @@ if (now < unlockDate) {
     </div>
   `;
 }
+
+// 🔥 TRACKING CHUẨN (QUAN TRỌNG)
+(function() {
+  const pageName = window.location.pathname.split("/").pop().replace(".html","");
+
+  fetch("https://script.google.com/macros/s/AKfycbxK7n2qDiqAPXkPmsJlQnwsoFVAq2oqjkNNyg8SPsgZxDh3Zlhxkpx5Zio0AQ3iHwKwjA/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      page: pageName,
+      time: new Date().toLocaleString()
+    })
+  });
+})();
 </script>
 
 </body>
