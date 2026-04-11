@@ -22,15 +22,14 @@ body {
   margin: auto;
 }
 
+/* CARD */
 .card {
-  width: 100%;
-  height: 100px;
   perspective: 1000px;
 }
 
 .inner {
   width: 100%;
-  height: 100%;
+  height: 100px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
@@ -40,6 +39,7 @@ body {
   transform: rotateY(180deg);
 }
 
+/* 2 mặt */
 .front, .back {
   position: absolute;
   width: 100%;
@@ -55,48 +55,20 @@ body {
   font-weight: bold;
 }
 
-/* MẶT TRƯỚC */
+/* mặt trước */
 .front {
   background: #D6BFA9;
 }
 
-/* MẶT SAU */
+/* mặt sau */
 .back {
   background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
-.card.open .inner {
-  transform: rotateY(180deg);
-}
-
-.front, .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  backface-visibility: hidden;
-}
-
-.front {
-  background: #D6BFA9;
-}
-
-.back {
-  background: #A7C7E7;
-  transform: rotateY(180deg);
-}
-
+/* lock */
 .locked {
   opacity: 0.5;
-}
-
-.opened {
-  border: 2px solid #6B4F3A;
 }
 </style>
 </head>
@@ -109,8 +81,8 @@ body {
 <div class="calendar" id="calendar"></div>
 
 <script>
-const startDate = new Date("2026-05-04");
-const totalDays = 30;
+const startDate = new Date("2020-01-01"); // 
+const totalDays = 20;
 
 const today = new Date();
 const calendar = document.getElementById("calendar");
@@ -120,15 +92,8 @@ for (let i = 1; i <= totalDays; i++) {
   const unlock = new Date(startDate);
   unlock.setDate(startDate.getDate() + (i - 1));
 
-  const isOpened = localStorage.getItem("day" + i);
-
   const card = document.createElement("div");
   card.classList.add("card");
-
-  if (isOpened) {
-    card.classList.add("open");
-    card.classList.add("opened");
-  }
 
   const inner = document.createElement("div");
   inner.classList.add("inner");
@@ -143,7 +108,7 @@ for (let i = 1; i <= totalDays; i++) {
     front.innerHTML = `🔒 Day ${i}`;
     card.classList.add("locked");
   } else {
-    front.innerHTML = isOpened ? `✔️ Day ${i}` : `🔓 Day ${i}`;
+    front.innerHTML = `🔓 Day ${i}`;
   }
 
   back.innerHTML = `💌<br>Mở thư`;
@@ -155,9 +120,6 @@ for (let i = 1; i <= totalDays; i++) {
     }
 
     card.classList.add("open");
-    card.classList.add("opened");
-
-    localStorage.setItem("day" + i, "true");
 
     setTimeout(() => {
       window.location.href = `day${i}.html`;
