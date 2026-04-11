@@ -1,129 +1,141 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>For you</title>
+<meta charset="UTF-8">
+<title>For you</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background: #EAF4FB;
-      font-family: 'Quicksand', sans-serif;
-      text-align: center;
-      color: #6B4F3A;
-      padding: 20px;
-    }
+<style>
+body {
+  background: #EAF4FB;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  color: #6B4F3A;
+}
 
-    h2 {
-      margin-bottom: 5px;
-    }
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
 
-    p {
-      margin-bottom: 15px;
-    }
+.card {
+  perspective: 1000px;
+}
 
-    /* thứ trong tuần */
-    .week {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      max-width: 500px;
-      margin: auto;
-      margin-bottom: 8px;
-      font-size: 13px;
-      opacity: 0.7;
-    }
+.inner {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  transform-style: preserve-3d;
+  transition: 0.6s;
+}
 
-    /* calendar */
-    .calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
-      max-width: 500px;
-      margin: auto;
+.card.open .inner {
+  transform: rotateY(180deg);
+}
 
-      max-height: 400px;
-      overflow-y: auto;
-    }
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backface-visibility: hidden;
+}
 
-    .day {
-      padding: 18px 0;
-      border-radius: 15px;
-      background: #A7C7E7;
-      cursor: pointer;
-      transition: 0.2s;
-      font-weight: bold;
-      font-size: 14px;
-    }
+.front {
+  background: #D6BFA9;
+}
 
-    .day:hover {
-      transform: scale(1.05);
-    }
+.back {
+  background: #A7C7E7;
+  transform: rotateY(180deg);
+}
 
-    .locked {
-      background: #D6BFA9;
-      color: #6B4F3A;
-      cursor: not-allowed;
-    }
+.locked {
+  opacity: 0.5;
+}
 
-    .today {
-      border: 2px solid #6B4F3A;
-      background: #cfe5f7;
-    }
-  </style>
+.opened {
+  border: 2px solid #6B4F3A;
+}
+</style>
 </head>
+
 <body>
 
-<h2> 3412</h2>
+<h2>3412</h2>
 <p>Mỗi ngày mở một cái nha...</p>
 
-<!-- thứ -->
-<div class="week">
-  <div>CN</div>
-  <div>T2</div>
-  <div>T3</div>
-  <div>T4</div>
-  <div>T5</div>
-  <div>T6</div>
-  <div>T7</div>
-</div>
-
-<!-- calendar -->
 <div class="calendar" id="calendar"></div>
 
 <script>
-const startDate = new Date("2026-05-04"); // 
-const totalDays = 50; // 
+const startDate = new Date("2026-05-04");
+const totalDays = 30;
 
-const calendar = document.getElementById("calendar");
 const today = new Date();
+const calendar = document.getElementById("calendar");
 
 for (let i = 1; i <= totalDays; i++) {
 
   const unlock = new Date(startDate);
   unlock.setDate(startDate.getDate() + (i - 1));
 
-  const div = document.createElement("div");
-  div.classList.add("day");
+  const isOpened = localStorage.getItem("day" + i);
 
-  const isToday = today.toDateString() === unlock.toDateString();
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  if (isOpened) {
+    card.classList.add("open");
+    card.classList.add("opened");
+  }
+
+  const inner = document.createElement("div");
+  inner.classList.add("inner");
+
+  const front = document.createElement("div");
+  front.classList.add("front");
+
+  const back = document.createElement("div");
+  back.classList.add("back");
 
   if (today < unlock) {
-    div.classList.add("locked");
-    div.innerHTML = `🔒<br>Day ${i}`;
-    div.onclick = () => alert("⏳ Chưa tới ngày...");
+    front.innerHTML = `🔒 Day ${i}`;
+    card.classList.add("locked");
   } else {
-    div.innerHTML = `🔓<br>Day ${i}`;
-    div.onclick = () => {
+    front.innerHTML = isOpened ? `✔️ Day ${i}` : `🔓 Day ${i}`;
+  }
+
+  back.innerHTML = `💌 Mở`;
+
+  card.onclick = () => {
+    if (today < unlock) {
+      alert("⏳ Chưa tới ngày...");
+      return;
+    }
+
+    card.classList.add("open");
+    card.classList.add("opened");
+
+    localStorage.setItem("day" + i, "true");
+
+    setTimeout(() => {
       window.location.href = `day${i}.html`;
-    };
-  }
+    }, 600);
+  };
 
-  if (isToday) {
-    div.classList.add("today");
-  }
-
-  calendar.appendChild(div);
+  inner.appendChild(front);
+  inner.appendChild(back);
+  card.appendChild(inner);
+  calendar.appendChild(card);
 }
 </script>
 
