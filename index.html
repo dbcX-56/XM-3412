@@ -16,24 +16,44 @@
     }
 
     h2 {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* thứ trong tuần */
+    .week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 8px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* calendar */
     .calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 15px;
+      gap: 12px;
       max-width: 500px;
       margin: auto;
+
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .day {
-      padding: 20px 0;
+      padding: 18px 0;
       border-radius: 15px;
       background: #A7C7E7;
       cursor: pointer;
       transition: 0.2s;
       font-weight: bold;
+      font-size: 14px;
     }
 
     .day:hover {
@@ -48,6 +68,7 @@
 
     .today {
       border: 2px solid #6B4F3A;
+      background: #cfe5f7;
     }
   </style>
 </head>
@@ -56,11 +77,23 @@
 <h2> 3412</h2>
 <p>Mỗi ngày mở một cái nha...</p>
 
+<!-- thứ -->
+<div class="week">
+  <div>CN</div>
+  <div>T2</div>
+  <div>T3</div>
+  <div>T4</div>
+  <div>T5</div>
+  <div>T6</div>
+  <div>T7</div>
+</div>
+
+<!-- calendar -->
 <div class="calendar" id="calendar"></div>
 
 <script>
-const startDate = new Date("2026-05-04"); // 👉 ngày bắt đầu
-const totalDays = 50;
+const startDate = new Date("2026-05-04"); // 
+const totalDays = 50; // 
 
 const calendar = document.getElementById("calendar");
 const today = new Date();
@@ -73,7 +106,6 @@ for (let i = 1; i <= totalDays; i++) {
   const div = document.createElement("div");
   div.classList.add("day");
 
-  // check hôm nay
   const isToday = today.toDateString() === unlock.toDateString();
 
   if (today < unlock) {
