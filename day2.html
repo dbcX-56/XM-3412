@@ -4,105 +4,94 @@
   <meta charset="UTF-8">
   <title>For you</title>
 
-  <!-- dbcM font -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: #EAF4FB;
-      font-family: 'Quicksand', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
+      font-family: 'Quicksand', sans-serif;
+      color: #5A3E2B;
       text-align: center;
-      color: #6B4F3A;
-      padding: 20px;
     }
 
-    .box {
-      background: #ffffffcc;
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 650px;
-      margin: auto;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-      line-height: 1.8;
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 30px auto 60px;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
       text-align: left;
     }
 
-    h3 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    p {
-      margin-bottom: 14px;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div id="content">Đang mở...</div>
+<div class="icon">💌</div>
+
+<div class="container" id="content"></div>
 
 <script>
-// 🔒 unlock ngày 10/04/2026
-const unlockDate = new Date(2020, 0, 1);
+  const unlockDate = new Date("2026-04-13T00:00:00+07:00");
+  const now = new Date();
 
-const now = new Date();
-const content = document.getElementById("content");
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Hnay em đi thi rồi, sáng nay em có nt cho anh nói Hôm nay em đi thi, nma lại xoá đi vì e nghĩ điều đó chắc sẽ làm phiền anh. 
+Nay em dg thi thì tự nhiên nước mắt chảy ra khóc, coi khùng ko
+Em sẽ cố gắng ở những đợt thi sau 😚
 
-if (now < unlockDate) {
-  content.innerHTML = `
-    <div class="box">
-      <h3>⏳ Chưa tới ngày</h3>
-      <p>Hãy quay lại vào 05/05 nha...</p>
-    </div>
-  `;
-} else {
-  content.innerHTML = `
-    <div class="box">
+Em dg chuẩn bị quà snhat cho anh nèeeeee
 
-    <h3>💌</h3>
+Nếu em tính toán ko nhầm thì lúc anh mở lá thư này là anh nhận dc quà mấy ngày rồi đúng hôngggggg.
+Đáng lẽ mấy dòng này phải đc chia sẻ ngay ngày snhat của anh mới đúng, nhưng em ko muốn sắp xếp hay trình bày theo thứ tự gì cả.
+Đều là những gì em nghĩ về anh vào từng thời điểm mà đem chia sẻ vs anh thôi. Đó là những gì nguyên bản nhất trong snghi của em.
 
-    <p>Hay thiệt, hôm qua em có một giấc mơ, trong đó có anh và em. Anh nhắn tin hỏi em liệu chúng ta có thể bỏ qua tất cả những điều trước đó để làm lại không. Em đồng ý rồi bật dậy, điều đầu tiên làm là lấy điện thoại để kiểm tra. Nhưng vẫn vậy đó… vẫn không có gì.</p>
+Ko phải là năm nào cũng chọn đại 1 cái áo đâu. Em snghi nhiều thứ và cb trước lâu lắm ah.
 
-    <p>Mai em thi rồi. Nhớ lúc trước anh nói đợt sau em thi sẽ chạy ra chơi với em. Nhưng giờ em cũng không còn được nhận điều đó nữa.</p>
+Năm đầu tiên thì đương nhiên là chọn món nào cho anh dễ dùng và tiêu chí là đưa anh đến thế giới người trẻ con là em nè, nên mới tặng 1 cái áo thun mặc dô là đẹp trai trẻ trung liền.
 
-    <p>Lần đầu tiên gặp anh, đối với em anh mang lại cảm giác ấm áp và vui vẻ. Nhưng nhìn anh cũng rất buồn, cảm giác anh ôm nhiều thứ một mình và không chia sẻ nhiều với ai. Mà đúng thiệt, vì thời gian qua bên nhau nhưng em cũng không là người lắng nghe anh nhiều… em xin lỗi.</p>
+Năm thứ 2, thật ra muốn tặng cho anh 1 cái bóp tiền, nhưng vì lúc trc em hỏi nên tặng gì snhat Ba, anh kêu tặng ví da, xong em giỡn về cái ví hầm hố đó của anh thì anh kêu “da thiệt đó” nên em cũng sợ nếu ko kiếm được đồ da xịn để tặng anh.
 
-    <p>Xịn hơi khó tính, đôi lúc không kiểm soát được sự tức giận của mình… phải thay đổi một chút đi nha. Vì sẽ tốt hơn cho công việc sau này của anh, cũng như còn P với M nữa mà.</p>
+Muốn tặng 1 đôi giày cho anh đi, nma ngta kêu tặng giày là bỏ đi mất nên em cũng phải chọn qua cái khác.
+Muốn tặng anh túi tote nữa nhưng nghĩ cái đó muốn đi mua cho anh để thấy anh đeo lên đẹp ko.
 
-    <p>Cho dù anh có hơi lớn hơn em một chút nhưng em vẫn thấy chúng ta hợp nhau. Anh là người vui tính, ấm áp và chiều chuộng em, cũng là người cố gắng để trẻ trung hơn khi bên em… em thích điều đó lắm. Anh là người đã cho em sự an toàn, bình yên, và cũng là người rất quan trọng với em.</p>
+Tiêu chí là em muốn cái gì anh có thể dùng được nhiều, mỗi lần dùng là có cảm giác em bên anh vậy đó, và cũng có cảm giác như em dg chăm sóc cho anh, nên áo là thích hợp đúng ko. Cảm giác được nhìn người mình thương mặc đồ mình chọn, mình mua lúc ngta đi làm. Cảm giác em cũng làm dc gì đó cho anh.
+Nên em nghĩ áo rất là phù hợp. Còn kem tay, em lúc nào cũng nói thích tay anh, tay anh mềm ấm. Nên em muốn tay anh mãi dc như vậy nên kem tay là để chăm sóc bàn tay mà em yêu thương đó. 
 
-    <p>Em thích anh vẽ, thích nét chữ của anh. Thích anh là người vui vẻ. Nhưng vì chúng ta đã từng bên nhau… nên điều em mong nhất là nếu có thể, anh vẫn sống hạnh phúc, vui vẻ và khỏe mạnh.</p>
+Năm nay thì hơi khác, ko còn được ngửi mùi của anh nữa rồi nên em cố giữ lại 1 chút. Ít ra sau này khi ngửi mùi nước hoa này em cũng sẽ biết người em yêu cũng (từng) dùng 1 chai như vậy.
 
-    <p>Em vẫn còn nhớ lần đầu ra lấy ly nước anh mua… anh lúc đó vừa đẹp trai vừa ấm áp, tim em đập liên hồi và cười không lý do.</p>
-
-    <p>Em nhớ lúc anh cố gắng để hôn em… nhớ lúc tan làm tụi mình gặp nhau một chút… nhớ lúc em bye anh rồi đi ra vẫn thấy anh đứng đó chờ.</p>
-
-    <p>Em nhớ lần em ngủ quên mà để anh đợi gần cả tiếng… nhớ lúc tụi mình đi làm nến cùng nhau vui như thế nào.</p>
-
-    <p><b>Em nhớ tụi mình.</b></p>
-
-    <p>Em mong Xịn có thể chia sẻ nhiều hơn, nói ra nhiều hơn để nhẹ lòng hơn. Em cũng mong anh luôn khỏe mạnh… vì bên cạnh anh còn nhiều người cần anh lắm.</p>
-
-    <p>Em chỉ mong anh vẫn sống bình thường, vui vẻ và hạnh phúc.</p>
-
-    <p>Em từng nói bên anh có em là thật lòng… nhưng anh lại nói anh chỉ muốn một mình. Em đau lòng, nhưng cũng chấp nhận… vì ít nhất em biết được điều anh thật sự muốn.</p>
-
-    <p>Cho dù em làm gì, đi đâu… em vẫn thấy hình ảnh của anh. Em muốn thoát ra, nhưng em không biết cách.</p>
-
-    <p>Tình yêu của tụi mình… thật sự rất đẹp. Đúng như anh nói, một mối quan hệ đẹp… nhưng không thể tiếp tục.</p>
-
-    <p>Bên anh, em đã rất hạnh phúc. Những gì anh làm cho em… em đều cảm nhận được. Những lần cãi nhau… em không còn nhớ rõ nữa. Em chỉ nhớ tụi mình đã từng vui như thế nào.</p>
-
-    <p>Em từng cố nghĩ về những điều tiêu cực để quên anh nhanh hơn… nhưng em không làm được. Vì những điều đẹp giữa tụi mình đáng giá hơn tất cả.</p>
-
-    <p>Em đã buồn rất nhiều… khi anh đi công tác mà em không biết anh đi đâu. Trước đây anh luôn nói với em mọi thứ… nhưng lần đó thì không. Em thấy trống rỗng.</p>
-
-    <p><b>Em nhớ anh, rất nhiều.</b></p>
-
-    </div>
-  `;
-}
+Ko còn nắm tay em nữa nhưng lâu lâu cũng giữ thói quen sài kem tay nha. Vì em thích bàn tay này lắm và vì tay anh đẹp lắm.`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
 </script>
 
 <!-- 🔥 tracking -->
