@@ -14,22 +14,42 @@ body {
   color: #6B4F3A;
 }
 
-.page { display: none; }
-.page.active { display: block; }
-
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  max-width: 420px;
-  margin: auto;
+/* header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   margin-top: 20px;
 }
 
-.card { perspective: 1000px; }
+.header h2 {
+  margin: 0;
+}
+
+/* ảnh */
+.cute-img {
+  width: 130px;
+  margin: 12px auto;
+  display: block;
+}
+
+/* grid 3x4 */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 360px;
+  margin: 30px auto;
+}
+
+/* card */
+.card {
+  perspective: 1000px;
+}
 
 .inner {
-  height: 100px;
+  height: 110px;
   transform-style: preserve-3d;
   transition: transform 0.6s;
 }
@@ -42,7 +62,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 18px;
 
   display: flex;
   align-items: center;
@@ -51,63 +71,48 @@ body {
 
   backface-visibility: hidden;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .front { background: #D6BFA9; }
+
 .back {
   background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
 .locked { opacity: 0.5; }
-
-.nav-btn { margin: 30px; }
-
-button {
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background: #9ec3e6;
-}
 </style>
 </head>
 
 <body>
 
-<h2>3412</h2>
+<!-- HEADER -->
+<div class="header">
+  <h2>3412</h2>
+  <span>🧸🥄</span>
+</div>
+
+<!-- ẢNH -->
+<img src="cuaxin.png" class="cute-img">
+
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
-<!-- PAGE 1 -->
-<div id="page1" class="page active">
-  <div class="calendar" id="cal1"></div>
-
-  <div class="nav-btn">
-    <button onclick="goPage(2)">🧸🥄 Trang tiếp</button>
-  </div>
-</div>
-
-<!-- PAGE 2 -->
-<div id="page2" class="page">
-  <div class="calendar" id="cal2"></div>
-
-  <div class="nav-btn">
-    <button onclick="goPage(1)">← Quay lại</button>
-  </div>
-</div>
+<!-- CALENDAR -->
+<div class="calendar" id="cal"></div>
 
 <script>
-// 🔥 CONFIG
+// CONFIG
 const startDate = new Date("2026-04-13T00:00:00+07:00");
 const today = new Date();
 
-// 👉 TEST MODE (đang test tới Day 3)
-const testDay = 3; // đổi = 0 để tắt test
+// TEST (đang mở tới Day 3)
+const testDay = 3; // 👉 đổi 0 khi chạy thật
 
-// render function
-function render(start, end, containerId) {
-  const container = document.getElementById(containerId);
+function render(total) {
+  const container = document.getElementById("cal");
 
-  for (let i = start; i <= end; i++) {
+  for (let i = 1; i <= total; i++) {
 
     const unlock = new Date(startDate);
     unlock.setDate(startDate.getDate() + (i - 1));
@@ -124,7 +129,7 @@ function render(start, end, containerId) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // 🔥 LOGIC ICON
+    // LOGIC
     if (testDay > 0 && i <= testDay) {
       front.innerHTML = `🔓 Day ${i}`;
     } else if (today < unlock) {
@@ -136,11 +141,11 @@ function render(start, end, containerId) {
 
     back.innerHTML = `💌<br>Mở`;
 
-    // 🔥 CLICK
+    // CLICK
     card.onclick = () => {
 
       if (testDay > 0 && i <= testDay) {
-        // cho mở luôn
+        // mở luôn
       } else if (today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
@@ -160,23 +165,9 @@ function render(start, end, containerId) {
   }
 }
 
-// render
-render(1, 12, "cal1");
-render(13, 24, "cal2");
+// 👉 12 lá
+render(12);
 
-// chuyển trang
-function goPage(page) {
-  const diffTime = today - startDate;
-  const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-
-  if (testDay === 0 && page === 2 && currentDay < 13) {
-    alert("Chưa tới ngày mở trang 2 💌");
-    return;
-  }
-
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById("page" + page).classList.add("active");
-}
 </script>
 
 </body>
