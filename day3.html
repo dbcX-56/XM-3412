@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>For you</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
+      font-family: 'Quicksand', sans-serif;
+      color: #5A3E2B;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 30px auto 60px;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
+      text-align: left;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="icon">💌</div>
+
+<div class="container" id="content"></div>
+
+<script>
+  const unlockDate = new Date("2026-04-13T00:00:00+07:00");
+  const now = new Date();
+
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Hnay em đi thi rồi, sáng nay em có nt cho anh nói Hôm nay em đi thi, nma lại xoá đi vì e nghĩ điều đó chắc sẽ làm phiền anh. 
+Nay em dg thi thì tự nhiên nước mắt chảy ra khóc, coi khùng ko
+Em sẽ cố gắng ở những đợt thi sau 😚
+
+Em dg chuẩn bị quà snhat cho anh nèeeeee
+
+Nếu em tính toán ko nhầm thì lúc anh mở lá thư này là anh nhận dc quà mấy ngày rồi đúng hôngggggg.
+Đáng lẽ mấy dòng này phải đc chia sẻ ngay ngày snhat của anh mới đúng, nhưng em ko muốn sắp xếp hay trình bày theo thứ tự gì cả.
+Đều là những gì em nghĩ về anh vào từng thời điểm mà đem chia sẻ vs anh thôi. Đó là những gì nguyên bản nhất trong snghi của em.
+
+Ko phải là năm nào cũng chọn đại 1 cái áo đâu. Em snghi nhiều thứ và cb trước lâu lắm ah.
+
+Năm đầu tiên thì đương nhiên là chọn món nào cho anh dễ dùng và tiêu chí là đưa anh đến thế giới người trẻ con là em nè, nên mới tặng 1 cái áo thun mặc dô là đẹp trai trẻ trung liền.
+
+Năm thứ 2, thật ra muốn tặng cho anh 1 cái bóp tiền, nhưng vì lúc trc em hỏi nên tặng gì snhat Ba, anh kêu tặng ví da, xong em giỡn về cái ví hầm hố đó của anh thì anh kêu “da thiệt đó” nên em cũng sợ nếu ko kiếm được đồ da xịn để tặng anh.
+
+Muốn tặng 1 đôi giày cho anh đi, nma ngta kêu tặng giày là bỏ đi mất nên em cũng phải chọn qua cái khác.
+Muốn tặng anh túi tote nữa nhưng nghĩ cái đó muốn đi mua cho anh để thấy anh đeo lên đẹp ko.
+
+Tiêu chí là em muốn cái gì anh có thể dùng được nhiều, mỗi lần dùng là có cảm giác em bên anh vậy đó, và cũng có cảm giác như em dg chăm sóc cho anh, nên áo là thích hợp đúng ko. Cảm giác được nhìn người mình thương mặc đồ mình chọn, mình mua lúc ngta đi làm. Cảm giác em cũng làm dc gì đó cho anh.
+Nên em nghĩ áo rất là phù hợp. Còn kem tay, em lúc nào cũng nói thích tay anh, tay anh mềm ấm. Nên em muốn tay anh mãi dc như vậy nên kem tay là để chăm sóc bàn tay mà em yêu thương đó. 
+
+Năm nay thì hơi khác, ko còn được ngửi mùi của anh nữa rồi nên em cố giữ lại 1 chút. Ít ra sau này khi ngửi mùi nước hoa này em cũng sẽ biết người em yêu cũng (từng) dùng 1 chai như vậy.
+
+Ko còn nắm tay em nữa nhưng lâu lâu cũng giữ thói quen sài kem tay nha. Vì em thích bàn tay này lắm và vì tay anh đẹp lắm.`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
+</script>
+
+</body>
+</html>
