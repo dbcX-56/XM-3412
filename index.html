@@ -14,13 +14,8 @@ body {
   color: #6B4F3A;
 }
 
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
+.page { display: none; }
+.page.active { display: block; }
 
 .calendar {
   display: grid;
@@ -31,9 +26,7 @@ body {
   margin-top: 20px;
 }
 
-.card {
-  perspective: 1000px;
-}
+.card { perspective: 1000px; }
 
 .inner {
   height: 100px;
@@ -68,9 +61,7 @@ body {
 
 .locked { opacity: 0.5; }
 
-.nav-btn {
-  margin: 30px;
-}
+.nav-btn { margin: 30px; }
 
 button {
   padding: 10px 20px;
@@ -86,16 +77,16 @@ button {
 <h2>3412</h2>
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
-<!-- 🔥 PAGE 1 -->
+<!-- PAGE 1 -->
 <div id="page1" class="page active">
   <div class="calendar" id="cal1"></div>
 
   <div class="nav-btn">
-   <button onclick="goPage(2)">🧸🥄 Trang tiếp</button>
+    <button onclick="goPage(2)">🧸🥄 Trang tiếp</button>
   </div>
 </div>
 
-<!-- 🔥 PAGE 2 -->
+<!-- PAGE 2 -->
 <div id="page2" class="page">
   <div class="calendar" id="cal2"></div>
 
@@ -105,8 +96,12 @@ button {
 </div>
 
 <script>
-const startDate = new Date("2020-01-01");
+// 🔥 CONFIG
+const startDate = new Date("2026-04-13T00:00:00+07:00");
 const today = new Date();
+
+// 👉 TEST MODE (đang test tới Day 3)
+const testDay = 3; // đổi = 0 để tắt test
 
 // render function
 function render(start, end, containerId) {
@@ -129,7 +124,10 @@ function render(start, end, containerId) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    if (today < unlock) {
+    // 🔥 LOGIC ICON
+    if (testDay > 0 && i <= testDay) {
+      front.innerHTML = `🔓 Day ${i}`;
+    } else if (today < unlock) {
       front.innerHTML = `🔒 Day ${i}`;
       card.classList.add("locked");
     } else {
@@ -138,8 +136,12 @@ function render(start, end, containerId) {
 
     back.innerHTML = `💌<br>Mở`;
 
+    // 🔥 CLICK
     card.onclick = () => {
-      if (today < unlock) {
+
+      if (testDay > 0 && i <= testDay) {
+        // cho mở luôn
+      } else if (today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -158,16 +160,16 @@ function render(start, end, containerId) {
   }
 }
 
-// render 2 page
+// render
 render(1, 12, "cal1");
 render(13, 24, "cal2");
 
-// 🔥 chuyển trang
+// chuyển trang
 function goPage(page) {
   const diffTime = today - startDate;
   const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-  if (page === 2 && currentDay < 13) {
+  if (testDay === 0 && page === 2 && currentDay < 13) {
     alert("Chưa tới ngày mở trang 2 💌");
     return;
   }
