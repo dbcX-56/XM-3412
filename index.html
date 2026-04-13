@@ -27,9 +27,12 @@ body {
   margin: 0;
 }
 
-/* ảnh */
+/* 🔥 crop ảnh chỉ còn 2 con */
 .cute-img {
-  width: 130px;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center 70%;
   margin: 12px auto;
   display: block;
 }
@@ -106,7 +109,7 @@ body {
 const startDate = new Date("2026-04-13T00:00:00+07:00");
 const today = new Date();
 
-// TEST (đang mở tới Day 3)
+// TEST
 const testDay = 3; // 👉 đổi 0 khi chạy thật
 
 function render(total) {
