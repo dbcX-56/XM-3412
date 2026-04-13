@@ -27,17 +27,23 @@ body {
   margin: 0;
 }
 
-/* 🔥 crop ảnh chỉ còn 2 con */
-.cute-img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  object-position: center 70%;
-  margin: 12px auto;
-  display: block;
+/* 🔥 CROP CHUẨN */
+.img-wrapper {
+  width: 180px;
+  height: 140px;
+  overflow: hidden;
+  margin: 10px auto;
+  position: relative;
 }
 
-/* grid 3x4 */
+.cute-img {
+  width: 260px;
+  position: absolute;
+  top: -60px;   /* kéo lên */
+  left: -40px;  /* kéo qua trái */
+}
+
+/* grid */
 .calendar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -90,18 +96,18 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <h2>3412</h2>
   <span>🧸🥄</span>
 </div>
 
-<!-- ẢNH -->
-<img src="cuaxin.png" class="cute-img">
+<!-- 🔥 ẢNH CROP -->
+<div class="img-wrapper">
+  <img src="cuaxin.png" class="cute-img">
+</div>
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
-<!-- CALENDAR -->
 <div class="calendar" id="cal"></div>
 
 <script>
@@ -110,7 +116,7 @@ const startDate = new Date("2026-04-13T00:00:00+07:00");
 const today = new Date();
 
 // TEST
-const testDay = 3; // 👉 đổi 0 khi chạy thật
+const testDay = 3; // đổi 0 khi chạy thật
 
 function render(total) {
   const container = document.getElementById("cal");
@@ -132,7 +138,6 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // LOGIC
     if (testDay > 0 && i <= testDay) {
       front.innerHTML = `🔓 Day ${i}`;
     } else if (today < unlock) {
@@ -144,12 +149,8 @@ function render(total) {
 
     back.innerHTML = `💌<br>Mở`;
 
-    // CLICK
     card.onclick = () => {
-
-      if (testDay > 0 && i <= testDay) {
-        // mở luôn
-      } else if (today < unlock) {
+      if (!(testDay > 0 && i <= testDay) && today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -168,9 +169,7 @@ function render(total) {
   }
 }
 
-// 👉 12 lá
 render(12);
-
 </script>
 
 </body>
