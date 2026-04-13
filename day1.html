@@ -4,114 +4,99 @@
   <meta charset="UTF-8">
   <title>For you</title>
 
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: #EAF4FB;
-      color: #6B4F3A;
-      padding: 30px;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
       font-family: 'Quicksand', sans-serif;
-      line-height: 1.7;
+      color: #5A3E2B;
     }
 
-    .box {
-      background: #ffffffcc;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 650px;
-      margin: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .container {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
     }
 
-    h3 {
-      margin-bottom: 20px;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div id="content">Đang mở...</div>
-
-<!-- 👁 tracking phụ (optional) -->
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=day1letter" style="display:none"/>
+<div class="container" id="content"></div>
 
 <script>
-// 🔒 LOCK NGÀY
-const unlockDate = new Date("2025-05-04T00:00:00");
-const now = new Date();
+  // 👉 ĐỔI NGÀY Ở ĐÂY (hiện tại để hôm nay test)
+  const unlockDate = new Date("2026-04-13T00:00:00+07:00");
+  const now = new Date();
 
-const content = document.getElementById("content");
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Mập đây,
 
-if (now < unlockDate) {
-  content.innerHTML = `
-    <div class="box">
-      <h3>⏳ Chưa tới ngày</h3>
-      <p>Hãy quay lại vào ngày 04/05 nhé...</p>
-    </div>
-  `;
-} else {
-  content.innerHTML = `
-    <div class="box">
+Hnay là 3 ngày anh xem tn của em nhưng ko tl.
+Em đã đắn đo lúc làm cái này vì vốn dĩ em ko chắc mình có đủ can đảm để anh đọc dc ko.
+Thật ra em định viết thư, nhưng điều đó thì hơi bất tiện cho anh nên em chuyển thành cái này vậy. Giỏi ko ?
 
-    <h3>💌 Mập đây,</h3>
+Mỗi ngày hãy mở 1 cái nha, vì đó đều là những gì em muốn nói với anh khi chúng ta không còn bên cạnh nhau nữa. 
+Trước tiên thì, em muốn nói, Em thương Anh.
 
-    <p>Em viết những lời này vào những ngày trước ngày anh sẽ đọc được...</p>
+Xịn của em rất giỏi, nhưng lại kém trong việc chia sẻ, em mong anh đừng tự ôm nhiều thứ một mình mà để bản thân bị gục ngã. Vì người đau lòng sẽ là em.
 
-    <p><b>Em thương Anh.</b></p>
+Chuyện cây bút, em đưa lại ko phải vì muốn trả đâu, vì nó hết mực rồi, nhưng em ko dám nói vs anh để fill lại. Vì sợ anh nói hết rồi thì e bỏ đi.
+Vậy nên em mới để lại trong hộp bút của anh chứ ko phải để cạnh cái hộp. Hy vọng anh sẽ test thử và biết vì sao nó nằm ở đó.
 
-    <p>Hnay là 3 ngày anh xem tn của em nhưng ko tl.</p>
+Hôm nay em có 1 snghi luôn quẩn quanh trong đầu, liệu rằng ngày hôm đó, ngày mà em về quê lúc Tết, ngày mà em tưởng em đã chết vì bất động 1 lúc lâu, nếu em gặp anh nhìn mọi chn có khác đi ko ? 
+Em nghĩ rồi, chắc là sẽ khác, ít nhất em vẫn dc anh ôm và yêu thương thêm 1 khoảng nữa, ít nhất vào ngày 14/2 đó tụi mình có thể vui vẻ yêu thương nhau. Và cũng có thể ít nhất những kế hoạch mà chúng ta muốn có thể đc thực hiện khi em quay lại SG. Nhưng liệu sau đó, em và anh có đau như bây h ko, em nghĩ chắc là có, anh nhỉ ? 
+Nhưng vì có thể sẽ dc bên anh thêm 1 khoảng nữa nên em cứ ám ảnh và hối hận mãi. Em ko chắc mình dg ntn nữa.
 
-    <p>Em đã đắn đo lúc làm cái này...</p>
+Anh biết ko, mỗi ngày đi làm em đều sợ ko nhìn thấy anh, sợ nhìn thấy anh mà chúng ta như 2 người lạ, em sợ nghe tiếng anh trong khi em dg tự thu mình lại trong cái mền và khóc. Nhưng ko thấy anh, em lại càng sợ hơn, sợ nhiều snghi trong đầu và sợ anh ko khoẻ.
+Em nhớ những lúc anh cười, những lúc anh vui vẻ và nhõng nhẽo bên em, em nhớ gương mặt anh lúc ngủ bình yên bên em và nhớ cái ôm chặt của anh, mùi của anh.
 
-    <p>Xịn của em rất giỏi nhưng lại kém chia sẻ...</p>
+Em thương anh, Xịn của em. Và em chưa bao giờ hối hận vì đã bên anh, có anh, và yêu thương anh. 
+Chắc là rời xa người quan trọng với mình ai cũng vậy, em có những ngày nhận ra em ko còn là em nữa, có những ngày em thấy việc sống thôi cũng khó khăn, và cứ khóc liên tục. Em loay hoay vì còn mắc kẹt ở chúng ta mà mãi ko tìm dc lối thoát. Em yêu anh, và nhiều hơn cả chính bản thân em. 
+Em cố sống qua từng ngày, rồi cố qua từng giờ, mỗi phút mỗi giây trôi qua em đều thấy sao nó dài và đau đớn vô cùng.
+Nhưng em giỏi, đúng ko. Vì muốn giữ anh nên nói mình muốn giữ, vì dám nói với anh những lời này. 
 
-    <p>Chuyện cây bút...</p>
+Em để bản thân thảm hại, ko màng đến việc anh nghĩ em rẻ mạt và thiếu tự trọng đến mức nào khi cứ mãi đeo bám anh như vậy. Vì em chỉ biết, em cần anh.
+Nhưng em cũng ko hối hận, vì đã yêu anh mà ko để lại chút đường lui nào cho mình và em đã muốn làm mọi cách để giữ đc tình yêu này.
 
-    <p>Hôm nay em có 1 snghi luôn quẩn quanh...</p>
+Em biết, anh mệt vì bên em nhưng cũng đã hạnh phúc ở bên em. Em thật sự xin lỗi vì trong suốt 2 năm đó em ko 1 lần ngồi xuống và trực tiếp nói những điều ám ảnh trong snghi của anh, để snghi đó trở thàng nỗi ám ảnh của chn tình cảm chúng ta.
 
-    <p>Anh biết ko...</p>
+Em đã từ lâu mặc định cho tụi mình 1 ngày kỉ niệm rồi, ngày 3/4 ngày anh cầm bó hoa đến đứng trc em, khiến em nhận ra thì ra mình cũng xứng đáng dc yêu thương giống như bao người khác. Em vui lắm, vì là bó hoa đầu tiên em đc tặng 1c bất ngờ mà ko cần đòi hỏi. Nhưng đến h thì em cũng nhận ra, em ko xứng đáng vs tình yêu của anh. 
 
-    <p>Em nhớ những lúc anh cười...</p>
+Lúc ở bên anh, em ko ước mình gặp anh sớm hơn, vì với em lúc đó mọi thứ bên anh đều quá đẹp, quá hạnh phúc, và quá đủ với em. Nhưng giờ thì e cũng ước như vậy. Em ước dc ở bên anh sớm thật sớm, dc ôm anh ngủ mỗi tối, và là người chính thức của anh. Em ước gì ng ở trong mỗi giấc mơ là anh và em, người chăm sóc anh, lắng nghe anh cũng là em.
 
-    <p><b>Em thương anh, Xịn của em.</b></p>
-
-    <p>Em chưa bao giờ hối hận...</p>
-
-    <p>Em cố sống qua từng ngày...</p>
-
-    <p>Em biết mình có thể trông thảm hại...</p>
-
-    <p>Em xin lỗi...</p>
-
-    <p>Ngày 3/4...</p>
-
-    <p>Em ước được gặp anh sớm hơn...</p>
-
-    <p>Em vẫn thương anh...</p>
-
-    <p>Em nhớ tay ấm của anh.</p>
-
-    <p><b>Xịn của em</b></p>
-
-    </div>
-  `;
-}
-
-// 🔥 TRACKING CHUẨN (QUAN TRỌNG)
-(function() {
-  const pageName = window.location.pathname.split("/").pop().replace(".html","");
-
-  fetch("https://script.google.com/macros/s/AKfycbxK7n2qDiqAPXkPmsJlQnwsoFVAq2oqjkNNyg8SPsgZxDh3Zlhxkpx5Zio0AQ3iHwKwjA/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      page: pageName,
-      time: new Date().toLocaleString()
-    })
-  });
-})();
+Em vẫn thương anh, và thương anh mãi. Thương anh dù chỉ có 1 mình em. Anh đừng lo, cũng đừng buồn vì em vẫn ở đây thôi. 
+Em nhớ tay ấm của anh.
+Xịn của em`;
+  } else {
+    document.getElementById("content").innerText = "Chưa đến ngày mở nha...";
+  }
 </script>
 
 </body>
