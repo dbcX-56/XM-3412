@@ -14,11 +14,18 @@
       background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
       font-family: 'Quicksand', sans-serif;
       color: #5A3E2B;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
     }
 
     .container {
       max-width: 720px;
-      margin: 60px auto;
+      margin: 30px auto 60px;
       padding: 35px 28px;
       background: rgba(255, 255, 255, 0.6);
       border-radius: 16px;
@@ -31,6 +38,7 @@
 
       backdrop-filter: blur(6px);
       animation: fadeIn 1.2s ease;
+      text-align: left;
     }
 
     @keyframes fadeIn {
@@ -48,10 +56,11 @@
 
 <body>
 
+<div class="icon">💌</div>
+
 <div class="container" id="content"></div>
 
 <script>
-  // 👉 ĐỔI NGÀY Ở ĐÂY (hiện tại để hôm nay test)
   const unlockDate = new Date("2026-04-13T00:00:00+07:00");
   const now = new Date();
 
@@ -95,7 +104,7 @@ Em vẫn thương anh, và thương anh mãi. Thương anh dù chỉ có 1 mình
 Em nhớ tay ấm của anh.
 Xịn của em`;
   } else {
-    document.getElementById("content").innerText = "Chưa đến ngày mở nha...";
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
   }
 </script>
 
