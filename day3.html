@@ -60,7 +60,8 @@
 <div class="container" id="content"></div>
 
 <script>
-  const unlockDate = new Date("2026-04-13T00:00:00+07:00");
+  // 👉 TEST: để 2020 cho mở liền, sau này đổi lại ngày thật
+  const unlockDate = new Date("2020-01-01T00:00:00+07:00");
   const now = new Date();
 
   if (now >= unlockDate) {
@@ -93,6 +94,9 @@ Ko còn nắm tay em nữa nhưng lâu lâu cũng giữ thói quen sài kem tay 
     document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
   }
 </script>
+
+<!-- 🔥 tracking -->
+<script src="tracking.js"></script>
 
 </body>
 </html>
