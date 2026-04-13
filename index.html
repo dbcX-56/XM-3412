@@ -14,6 +14,14 @@ body {
   color: #6B4F3A;
 }
 
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
 .calendar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -28,9 +36,7 @@ body {
 }
 
 .inner {
-  width: 100%;
   height: 100px;
-  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
 }
@@ -54,78 +60,120 @@ body {
   font-weight: bold;
 }
 
-.front {
-  background: #D6BFA9;
-}
-
+.front { background: #D6BFA9; }
 .back {
   background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
-.locked {
-  opacity: 0.5;
+.locked { opacity: 0.5; }
+
+.nav-btn {
+  margin: 30px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #9ec3e6;
 }
 </style>
 </head>
 
 <body>
 
-<h2> 3412</h2>
-<p>Mỗi ngày mở một cái nha...</p>
+<h2>3412</h2>
+<p>Mỗi ngày mở một cái nha... 💌</p>
 
-<div class="calendar" id="calendar"></div>
+<!-- 🔥 PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="calendar" id="cal1"></div>
+
+  <div class="nav-btn">
+    <button onclick="goPage(2)">👉 Trang tiếp</button>
+  </div>
+</div>
+
+<!-- 🔥 PAGE 2 -->
+<div id="page2" class="page">
+  <div class="calendar" id="cal2"></div>
+
+  <div class="nav-btn">
+    <button onclick="goPage(1)">← Quay lại</button>
+  </div>
+</div>
 
 <script>
 const startDate = new Date("2020-01-01");
-const totalDays = 12;
-
 const today = new Date();
-const calendar = document.getElementById("calendar");
 
-for (let i = 1; i <= totalDays; i++) {
+// render function
+function render(start, end, containerId) {
+  const container = document.getElementById(containerId);
 
-  const unlock = new Date(startDate);
-  unlock.setDate(startDate.getDate() + (i - 1));
+  for (let i = start; i <= end; i++) {
 
-  const card = document.createElement("div");
-  card.classList.add("card");
+    const unlock = new Date(startDate);
+    unlock.setDate(startDate.getDate() + (i - 1));
 
-  const inner = document.createElement("div");
-  inner.classList.add("inner");
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-  const front = document.createElement("div");
-  front.classList.add("front");
+    const inner = document.createElement("div");
+    inner.classList.add("inner");
 
-  const back = document.createElement("div");
-  back.classList.add("back");
+    const front = document.createElement("div");
+    front.classList.add("front");
 
-  if (today < unlock) {
-    front.innerHTML = `🔒 Day ${i}`;
-    card.classList.add("locked");
-  } else {
-    front.innerHTML = `🔓 Day ${i}`;
-  }
+    const back = document.createElement("div");
+    back.classList.add("back");
 
-  back.innerHTML = `💌<br>Mở`;
-
-  card.onclick = () => {
     if (today < unlock) {
-      alert("⏳ Chưa tới ngày...");
-      return;
+      front.innerHTML = `🔒 Day ${i}`;
+      card.classList.add("locked");
+    } else {
+      front.innerHTML = `🔓 Day ${i}`;
     }
 
-    card.classList.add("open");
+    back.innerHTML = `💌<br>Mở`;
 
-    setTimeout(() => {
-      window.location.href = `day${i}.html`;
-    }, 600);
-  };
+    card.onclick = () => {
+      if (today < unlock) {
+        alert("⏳ Chưa tới ngày...");
+        return;
+      }
 
-  inner.appendChild(front);
-  inner.appendChild(back);
-  card.appendChild(inner);
-  calendar.appendChild(card);
+      card.classList.add("open");
+
+      setTimeout(() => {
+        window.location.href = `day${i}.html`;
+      }, 600);
+    };
+
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
+    container.appendChild(card);
+  }
+}
+
+// render 2 page
+render(1, 12, "cal1");
+render(13, 24, "cal2");
+
+// 🔥 chuyển trang
+function goPage(page) {
+  const diffTime = today - startDate;
+  const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  if (page === 2 && currentDay < 13) {
+    alert("Chưa tới ngày mở trang 2 💌");
+    return;
+  }
+
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page" + page).classList.add("active");
 }
 </script>
 
