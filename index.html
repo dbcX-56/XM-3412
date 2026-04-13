@@ -27,14 +27,15 @@ body {
   margin: 0;
 }
 
-/* ảnh (không crop nữa) */
+/* 🔥 ảnh fix nền đen */
 .cute-img {
   width: 140px;
   margin: 12px auto;
   display: block;
+  mix-blend-mode: screen;
 }
 
-/* grid 3x4 */
+/* grid */
 .calendar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -87,27 +88,23 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <h2>3412</h2>
   <span>🧸🥄</span>
 </div>
 
-<!-- ẢNH -->
-<img src="cuaxin.png?v=1" class="cute-img">
+<img src="cuaxin.png?v=5" class="cute-img">
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
-<!-- CALENDAR -->
 <div class="calendar" id="cal"></div>
 
 <script>
-// CONFIG
 const startDate = new Date("2026-04-13T00:00:00+07:00");
 const today = new Date();
 
-// TEST
-const testDay = 3; // 👉 đổi 0 khi chạy thật
+// 👉 test tới Day 3
+const testDay = 3;
 
 function render(total) {
   const container = document.getElementById("cal");
@@ -129,7 +126,6 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // LOGIC
     if (testDay > 0 && i <= testDay) {
       front.innerHTML = `🔓 Day ${i}`;
     } else if (today < unlock) {
@@ -141,12 +137,8 @@ function render(total) {
 
     back.innerHTML = `💌<br>Mở`;
 
-    // CLICK
     card.onclick = () => {
-
-      if (testDay > 0 && i <= testDay) {
-        // mở luôn
-      } else if (today < unlock) {
+      if (!(testDay > 0 && i <= testDay) && today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -165,9 +157,7 @@ function render(total) {
   }
 }
 
-// 👉 12 lá
 render(12);
-
 </script>
 
 </body>
