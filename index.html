@@ -14,7 +14,6 @@ body {
   color: #6B4F3A;
 }
 
-/* header */
 .header {
   display: flex;
   justify-content: center;
@@ -25,14 +24,12 @@ body {
 
 .header h2 { margin: 0; }
 
-/* ảnh */
 .cute-img {
   width: 140px;
   margin: 12px auto;
   display: block;
 }
 
-/* grid */
 .calendar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -41,14 +38,8 @@ body {
   margin: 30px auto;
 }
 
-/* card */
 .card {
   perspective: 1000px;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
 }
 
 .inner {
@@ -84,15 +75,9 @@ body {
   transform: rotateY(180deg);
 }
 
-/* 🔥 lock đẹp */
+/* 🔥 mờ nhẹ */
 .locked {
-  filter: grayscale(0.6);
-}
-
-/* ✨ highlight today */
-.today {
-  border: 2px solid #9ec3e6;
-  transform: scale(1.05);
+  opacity: 0.5;
 }
 </style>
 </head>
@@ -104,30 +89,32 @@ body {
   <span>🧸🥄</span>
 </div>
 
-<img src="cuaxin.png?v=100" class="cute-img">
+<img src="cuaxin.png?v=111" class="cute-img">
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
 <div class="calendar" id="cal"></div>
 
 <script>
-
-// 🔥 CHỈ SỬA DÒNG NÀY
-const startDate = new Date("2026-04-11T00:00:00+07:00");
-  
 const today = new Date();
 
-// 👉 tính day hiện tại
-const diffTime = today - startDate;
-const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+// 🔥 CHỈ SỬA Ở ĐÂY
+const unlockDates = {
+  1: "2026-03-01",
+  2: "2026-03-05",
+  3: "2026-03-10",
+  4: "2026-03-20"
+  // 👉 thêm sau:
+  // 5: "2026-06-01"
+};
 
 function render(total) {
   const container = document.getElementById("cal");
 
   for (let i = 1; i <= total; i++) {
 
-    const unlock = new Date(startDate);
-    unlock.setDate(startDate.getDate() + (i - 1));
+    const unlockStr = unlockDates[i];
+    const unlock = unlockStr ? new Date(unlockStr + "T00:00:00+07:00") : null;
 
     const card = document.createElement("div");
     card.classList.add("card");
@@ -141,23 +128,21 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // 🔓 / 🔒
-    if (today >= unlock) {
+    // 🔥 LOGIC
+    if (!unlock) {
+      front.innerHTML = `🔒 Day ${i}`;
+      card.classList.add("locked");
+    } else if (today >= unlock) {
       front.innerHTML = `🔓 Day ${i}`;
     } else {
       front.innerHTML = `🔒 Day ${i}`;
       card.classList.add("locked");
     }
 
-    // ✨ highlight today
-    if (i === currentDay) {
-      front.classList.add("today");
-    }
-
     back.innerHTML = `💌<br>Mở`;
 
     card.onclick = () => {
-      if (today < unlock) {
+      if (!unlock || today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -177,7 +162,6 @@ function render(total) {
 }
 
 render(12);
-
 </script>
 
 </body>
