@@ -58,3 +58,42 @@
 <div class="icon">💌</div>
 
 <div class="container" id="content"></div>
+
+<script>
+  // 👉 TEST: để mở luôn, sau đổi lại ngày thật
+  const unlockDate = new Date("2020-01-01T00:00:00+07:00");
+  const now = new Date();
+
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Sáng nào e cũng bật dậy vs việc mở Kakao lên và xem có tin nhắn nào ko rồi chờ thật lâu ở khung chat đó.
+
+Anh có nhớ em ko ? 
+
+Tự nhiên thấy mấy ngày trước gửi cho anh những nội dung dài thật dài, sợ anh bị bội thực câu chữ quá à. 
+Nên cái này ngắn đi 1 xíu nha. Em nhớ anh, mỗi ngày trôi qua đều thêm nhớ anh.
+Em có rất nhiều cái muốn cho anh xem, nhiều điều để kể với anh, và nhiều nơi muốn mình đi cùng nhao.
+
+Lỗ xỏ lại bị sưng nữa rồi. Bên chỗ khám nói case này lạ quá. Vì lần khám trc nó đã lành lại rồi, nếu có bump thì cũng ko ntn. Chắc là nó cũng giống em đó. 
+
+Ngày nào đi làm mà thấy anh, em đều bồn chồn kiếm chỗ để nhìn lén anh haha.
+
+Anh có thích quà đó hông ?
+Và trả đồ cho em đi nhaaaa
+
+Em phải uống thuốc ngủ vì gần đây ko thể nào ngủ dc, vì em biết chỉ còn cách ko thức nữa thì em mới ngừng snghi đến chúng ta.
+
+Anh đang làm gì, có còn nhức đầu với đau vai nữa ko ? Có ngủ dc ko ? 
+Trên KK có 1 tin nhắn mà em ko bao h dám gửi nữa, nhưng lúc nào cũng có sẵn trong khung chat.
+Em muốn nt cho anh, em nhớ Xịn, em thương Xịn và cần Xịn. Muốn gặp anh.
+
+Em cứ nói những điều này hoài nhưng em ko biết anh có còn thương em ko. Em xin lỗi`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
+</script>
+
+<!-- 🔥 tracking -->
+<script src="tracking.js"></script>
+
+</body>
+</html>
