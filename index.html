@@ -42,7 +42,14 @@ body {
 }
 
 /* card */
-.card { perspective: 1000px; }
+.card {
+  perspective: 1000px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
 
 .inner {
   height: 110px;
@@ -77,9 +84,15 @@ body {
   transform: rotateY(180deg);
 }
 
-/* 🔥 lock đẹp hơn (không mờ) */
+/* 🔥 lock đẹp */
 .locked {
-  filter: grayscale(0.4);
+  filter: grayscale(0.6);
+}
+
+/* ✨ highlight today */
+.today {
+  border: 2px solid #9ec3e6;
+  transform: scale(1.05);
 }
 </style>
 </head>
@@ -91,7 +104,7 @@ body {
   <span>🧸🥄</span>
 </div>
 
-<img src="cuaxin.png?v=99" class="cute-img">
+<img src="cuaxin.png?v=100" class="cute-img">
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
@@ -99,10 +112,14 @@ body {
 
 <script>
 
-// 🔥 CHỈ SỬA DÒNG NÀY KHI CẦN
-const unlockDate = new Date("2000-01-01");
+// 🔥 CHỈ SỬA DÒNG NÀY
+const startDate = new Date("2020-01-01");
 
 const today = new Date();
+
+// 👉 tính day hiện tại
+const diffTime = today - startDate;
+const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
 function render(total) {
   const container = document.getElementById("cal");
@@ -124,7 +141,7 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // 🔥 LOGIC MỞ THEO NGÀY
+    // 🔓 / 🔒
     if (today >= unlock) {
       front.innerHTML = `🔓 Day ${i}`;
     } else {
@@ -132,9 +149,13 @@ function render(total) {
       card.classList.add("locked");
     }
 
+    // ✨ highlight today
+    if (i === currentDay) {
+      front.classList.add("today");
+    }
+
     back.innerHTML = `💌<br>Mở`;
 
-    // 🔥 CLICK
     card.onclick = () => {
       if (today < unlock) {
         alert("⏳ Chưa tới ngày...");
