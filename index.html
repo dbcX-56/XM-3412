@@ -23,11 +23,9 @@ body {
   margin-top: 20px;
 }
 
-.header h2 {
-  margin: 0;
-}
+.header h2 { margin: 0; }
 
-/* ảnh chuẩn (không cần hack nữa) */
+/* ảnh */
 .cute-img {
   width: 140px;
   margin: 12px auto;
@@ -44,9 +42,7 @@ body {
 }
 
 /* card */
-.card {
-  perspective: 1000px;
-}
+.card { perspective: 1000px; }
 
 .inner {
   height: 110px;
@@ -81,7 +77,10 @@ body {
   transform: rotateY(180deg);
 }
 
-.locked { opacity: 0.5; }
+/* 🔥 lock đẹp hơn (không mờ) */
+.locked {
+  filter: grayscale(0.4);
+}
 </style>
 </head>
 
@@ -92,19 +91,18 @@ body {
   <span>🧸🥄</span>
 </div>
 
-<!-- 🔥 ảnh chuẩn -->
-<img src="cuaxin.png?v=10" class="cute-img">
+<img src="cuaxin.png?v=99" class="cute-img">
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
 <div class="calendar" id="cal"></div>
 
 <script>
-const startDate = new Date("2026-04-13T00:00:00+07:00");
-const today = new Date();
 
-// 👉 test tới Day 3
-const testDay = null;
+// 🔥 CHỈ SỬA DÒNG NÀY KHI CẦN
+const startDate = new Date("2026-05-04T00:00:00+07:00");
+
+const today = new Date();
 
 function render(total) {
   const container = document.getElementById("cal");
@@ -126,19 +124,19 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    if (testDay > 0 && i <= testDay) {
+    // 🔥 LOGIC MỞ THEO NGÀY
+    if (today >= unlock) {
       front.innerHTML = `🔓 Day ${i}`;
-    } else if (today < unlock) {
+    } else {
       front.innerHTML = `🔒 Day ${i}`;
       card.classList.add("locked");
-    } else {
-      front.innerHTML = `🔓 Day ${i}`;
     }
 
     back.innerHTML = `💌<br>Mở`;
 
+    // 🔥 CLICK
     card.onclick = () => {
-      if (!(testDay > 0 && i <= testDay) && today < unlock) {
+      if (today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -158,6 +156,7 @@ function render(total) {
 }
 
 render(12);
+
 </script>
 
 </body>
