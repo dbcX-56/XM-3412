@@ -1,0 +1,86 @@
+```html id="d92ksl"
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>For you</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
+      font-family: 'Quicksand', sans-serif;
+      color: #5A3E2B;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 30px auto 60px;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
+      text-align: left;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="icon">💌</div>
+
+<div class="container" id="content"></div>
+
+<script>
+  // 👉 TEST: để mở luôn, sau đổi lại ngày thật
+  const unlockDate = new Date("2020-01-01T00:00:00+07:00");
+  const now = new Date();
+
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Hnay em ít khóc hơn rồi. Anh biết vì sao ko, vì hnay anh nhìn em, điều đó khiến em vui và an tâm, mọi snghi em đều chỉ nghĩ đến lúc đó. Đến ánh mắt, gương mặt người em thương. 
+
+Lâu rồi anh ko còn nhìn em lúc em đi qua như vậy nữa. Nên em rất vui, và cũng rất nhớ anh. 
+
+Giống như quay về lúc tụi mình mới biết nhau vậy. 
+
+Chỉ là vậy thôi, nhưng liệu em ổn nv được bao lâu nhỉ`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
+</script>
+
+<!-- 🔥 tracking -->
+<script src="tracking.js"></script>
+
+</body>
+</html>
+```
