@@ -11,7 +11,7 @@ body {
   background: #EAF4FB;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
-  color: #5A6C7D;
+  color: #6B4F3A;
 }
 
 .header {
@@ -68,10 +68,11 @@ body {
   font-size: 15px;
 }
 
-.front { background: #D6EAF8; }
+/* 👉 GIỮ NGUYÊN màu card thường */
+.front { background: #D6BFA9; }
 
 .back {
-  background: #AED6F1;
+  background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
@@ -79,16 +80,17 @@ body {
   opacity: 0.5;
 }
 
-/* ❄️ INTRO SPECIAL - ICY BLUE */
+/* ❄️ INTRO RIÊNG */
 .intro-card {
   grid-column: span 3;
   animation: glow 2s infinite alternate;
 }
 
 .intro-card .inner {
-  height: 115px; /* 👈 nhỏ lại xíu */
+  height: 115px;
 }
 
+/* 👉 CHỈ intro mới màu xanh */
 .intro-card .front {
   background: linear-gradient(135deg, #DFF6FF, #F0FBFF);
   font-size: 17px;
@@ -100,7 +102,7 @@ body {
   background: linear-gradient(135deg, #CDEBFF, #EAF6FF);
 }
 
-/* ✨ glow icy */
+/* glow */
 @keyframes glow {
   from {
     box-shadow: 0 0 8px rgba(173,216,230,0.4);
@@ -161,7 +163,7 @@ function render(total) {
 
   const frontIntro = document.createElement("div");
   frontIntro.classList.add("front");
-  frontIntro.innerHTML = "🎂<br>Ngày của Xịn";
+  frontIntro.innerHTML = "🎂<br>Ngày của Xịn nè";
 
   const backIntro = document.createElement("div");
   backIntro.classList.add("back");
