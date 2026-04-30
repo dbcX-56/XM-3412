@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>For you</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
+      font-family: 'Quicksand', sans-serif;
+      color: #5A3E2B;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 30px auto 60px;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
+      text-align: left;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="icon">💌</div>
+
+<div class="container" id="content"></div>
+
+<script>
+  // 👉 TEST: để mở luôn, sau đổi lại ngày thật
+  const unlockDate = new Date("2020-01-01T00:00:00+07:00");
+  const now = new Date();
+
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `
+
+Mấy lá thư này chắc sẽ hơi khác chút vì vốn dĩ em định để anh đọc được vào ngày 4/5, trước lúc anh off ở đây. 
+Đọc từ từ sau đó đến sinh nhật của anh thì sẽ là lá thư này, nhưng mà giờ anh vẫn ở đây rồi nên là mọi thứ trong đây có hơi xáo trộn chút xíuuuu. 
+
+Chuẩn bị sớm quá nên mọi thứ rối tung hết trơn, nhưng em vui vì ít ra cũng được gửi mọi thứ đúng ngày sinh nhật của anh và anh vẫn ở đây.
+
+Anh vẫn là người quan trọng với em và em vẫn luôn nhớ anh.
+Em mong rằng anh sẽ luôn vui vẻ, ăn đúng bữa, ngủ đủ giấc, làm việc bớt áp lực, mỗi ngày trôi qua đều là một ngày trọn vẹn và hài lòng với anh.
+
+Mỗi lần tặng gì đó cho anh em đều thấy sợ, sợ anh sẽ nói là em phiền và không muốn nhận gì từ em, nhưng trộm vía mọi thứ vẫn đang ổn. Em xin lỗi vì có thể chuyện đó khiến anh khó xử, nhưng em là vậy đó, đeo bám mà :)))) nhưng mấy cái đó đều là anh cần và hợp với anh chứ bộ, nên nếu sài dc thì cứ sài nha.
+Giờ nhìn đâu cũng thấy anh nên em phải chịu thôi, ko làm khác được.
+
+Em tự gói quà và tự làm mấy cái này đó, giỏi hông ?
+
+Em đã chuẩn bị rất nhiều cho sinh nhật của anh trước lúc tụi mình xảy ra chuyện, nhưng bây giờ thì không làm đc tất cả những gì đã lập kế hoạch ra.
+Năm đầu tiên thì tụi mình chưa có quen thuộc với nhau như bây giờ, em chưa làm được gì cho anh.
+
+Năm thứ 2 thì cãi nhau, em không cùng anh nổi nến, ko tự tay đưa quà cho anh được. Em đã tự nhủ sẽ bù đắp lại những gì 2 năm trước ko làm được vào năm nay.
+Muốn cùng anh hát chúc mừng sinh nhật, nhìn anh thổi nến, nhìn anh mở quà và nhìn anh xem anh có thích món quà đó. Muốn cùng anh làm gốm vào hôm nay, cùng anh ăn món anh thích và ôm anh nhiều thật nhiều.
+
+Em đã suy nghĩ hàng trăm lần liệu rằng em phải làm gì mới có thể ổn, cách nào mới đúng là cách để em thoát ra chuyện này, nhưng em thấy em chọn cách yêu anh bằng 1 mình em có lẽ là cách tốt nhất. Em muốn bình thường yêu anh bằng 1 mình em, muốn quan tâm anh bằng những gì em có thể. Có lẽ ko đặt nặng về “chúng ta”, về việc em là gì trong snghi của anh nữa mới là cách mà em thấy ổn cho mình. 
+
+Anh là một người tình cảm, và em biết ơn`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
+</script>
+
+<!-- 🔥 tracking -->
+<script src="tracking.js"></script>
+
+</body>
+</html>
+```
