@@ -22,12 +22,9 @@ body {
   margin-top: 20px;
 }
 
-.header h2 { margin: 0; }
-
 .cute-img {
   width: 140px;
   margin: 12px auto;
-  display: block;
 }
 
 .calendar {
@@ -65,57 +62,42 @@ body {
 
   backface-visibility: hidden;
   font-weight: bold;
-  font-size: 15px;
 }
 
-/* 👉 GIỮ NGUYÊN màu card thường */
-.front { background: #D6BFA9; }
+/* 🤎 MÀU MẶC ĐỊNH */
+.front {
+  background: #D6BFA9;
+}
 
 .back {
   background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
-.locked {
+/* 🔒 LOCK */
+.card.locked .front {
   opacity: 0.5;
+  filter: grayscale(30%);
 }
 
-/* ❄️ INTRO RIÊNG */
+/* 🎂 INTRO */
 .intro-card {
   grid-column: span 3;
-  animation: glow 2s infinite alternate;
 }
 
 .intro-card .inner {
   height: 115px;
 }
 
-/* 👉 CHỈ intro mới màu xanh */
 .intro-card .front {
   background: linear-gradient(135deg, #DFF6FF, #F0FBFF);
-  font-size: 17px;
-  box-shadow: 0 0 12px rgba(173, 216, 230, 0.5);
-  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(173,216,230,0.5);
+  transition: 0.3s;
 }
 
-.intro-card .back {
-  background: linear-gradient(135deg, #CDEBFF, #EAF6FF);
-}
-
-/* glow */
-@keyframes glow {
-  from {
-    box-shadow: 0 0 8px rgba(173,216,230,0.4);
-  }
-  to {
-    box-shadow: 0 0 18px rgba(173,216,230,0.9);
-  }
-}
-
-/* hover */
 .intro-card:hover .front {
   transform: scale(1.04);
-  box-shadow: 0 0 22px rgba(173,216,230,1);
+  box-shadow: 0 0 20px rgba(173,216,230,1);
 }
 </style>
 </head>
@@ -127,7 +109,7 @@ body {
   <span>🧸🥄</span>
 </div>
 
-<img src="cuaxin.png?v=111" class="cute-img">
+<img src="cuaxin.png" class="cute-img">
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
@@ -142,32 +124,24 @@ const unlockDates = {
   3: "2026-03-10",
   4: "2026-03-20",
   5: "2026-03-30",
-  6: "2026-04-05",
-  7: "2026-04-10",
-  8: "2026-04-15",
-  9: "2026-04-20",
-  10: "2026-04-25",
-  11: "2026-04-28",
-  12: "2026-05-01"
+  6: "2026-04-05"
 };
 
-function render(total) {
+// 🔥 AUTO RENDER
+function render() {
   const container = document.getElementById("cal");
+  const total = Object.keys(unlockDates).length;
 
   // 🎂 INTRO
   const intro = document.createElement("div");
   intro.classList.add("card", "intro-card");
 
-  const innerIntro = document.createElement("div");
-  innerIntro.classList.add("inner");
-
-  const frontIntro = document.createElement("div");
-  frontIntro.classList.add("front");
-  frontIntro.innerHTML = "🎂<br>Ngày của Xịn nè";
-
-  const backIntro = document.createElement("div");
-  backIntro.classList.add("back");
-  backIntro.innerHTML = "Mở nè 🎂";
+  intro.innerHTML = `
+    <div class="inner">
+      <div class="front">🎂<br>Ngày của Xịn nè</div>
+      <div class="back">Mở nè 🎂</div>
+    </div>
+  `;
 
   intro.onclick = () => {
     intro.classList.add("open");
@@ -176,43 +150,31 @@ function render(total) {
     }, 600);
   };
 
-  innerIntro.appendChild(frontIntro);
-  innerIntro.appendChild(backIntro);
-  intro.appendChild(innerIntro);
   container.appendChild(intro);
 
   // DAY
   for (let i = 1; i <= total; i++) {
 
-    const unlockStr = unlockDates[i];
-    const unlock = unlockStr ? new Date(unlockStr + "T00:00:00+07:00") : null;
+    const unlock = new Date(unlockDates[i] + "T00:00:00+07:00");
 
     const card = document.createElement("div");
     card.classList.add("card");
 
-    const inner = document.createElement("div");
-    inner.classList.add("inner");
-
-    const front = document.createElement("div");
-    front.classList.add("front");
-
-    const back = document.createElement("div");
-    back.classList.add("back");
-
-    if (!unlock) {
-      front.innerHTML = `🔒 Day ${i}`;
-      card.classList.add("locked");
-    } else if (today >= unlock) {
-      front.innerHTML = `🔓 Day ${i}`;
-    } else {
-      front.innerHTML = `🔒 Day ${i}`;
+    if (today < unlock) {
       card.classList.add("locked");
     }
 
-    back.innerHTML = `💌<br>Mở`;
+    card.innerHTML = `
+      <div class="inner">
+        <div class="front">
+          ${today >= unlock ? "🔓" : "🔒"} Day ${i}
+        </div>
+        <div class="back">💌<br>Mở</div>
+      </div>
+    `;
 
     card.onclick = () => {
-      if (!unlock || today < unlock) {
+      if (today < unlock) {
         alert("⏳ Chưa tới ngày...");
         return;
       }
@@ -224,14 +186,11 @@ function render(total) {
       }, 600);
     };
 
-    inner.appendChild(front);
-    inner.appendChild(back);
-    card.appendChild(inner);
     container.appendChild(card);
   }
 }
 
-render(12);
+render();
 </script>
 
 </body>
