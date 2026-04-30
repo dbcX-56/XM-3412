@@ -75,9 +75,48 @@ body {
   transform: rotateY(180deg);
 }
 
-/* 🔥 mờ nhẹ */
 .locked {
   opacity: 0.5;
+}
+
+/* 🔥 INTRO SPECIAL */
+.intro-card {
+  grid-column: span 3; /* nằm riêng 1 hàng */
+}
+
+.intro-card .inner {
+  height: 130px; /* to hơn */
+}
+
+.intro-card .front {
+  background: linear-gradient(135deg, #FFD6E0, #FFF0F5);
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+  transition: all 0.3s ease;
+}
+
+.intro-card .back {
+  background: linear-gradient(135deg, #FFC0CB, #E6E6FA);
+}
+
+/* ✨ glow nhẹ */
+.intro-card {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255,182,193,0.4);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255,182,193,0.9);
+  }
+}
+
+/* 😏 hover khác biệt */
+.intro-card:hover .front {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,182,193,1);
 }
 </style>
 </head>
@@ -98,20 +137,52 @@ body {
 <script>
 const today = new Date();
 
-// 🔥 CHỈ SỬA Ở ĐÂY
 const unlockDates = {
   1: "2026-03-01",
   2: "2026-03-05",
   3: "2026-03-10",
   4: "2026-03-20",
   5: "2026-03-30",
-  // 👉 thêm sau:
-  // 5: "2026-06-01"
+  6: "2026-04-05",
+  7: "2026-04-10",
+  8: "2026-04-15",
+  9: "2026-04-20",
+  10: "2026-04-25",
+  11: "2026-04-28",
+  12: "2026-05-01"
 };
 
 function render(total) {
   const container = document.getElementById("cal");
 
+  // 💌 THƯ NGỎ
+  const intro = document.createElement("div");
+  intro.classList.add("card", "intro-card");
+
+  const innerIntro = document.createElement("div");
+  innerIntro.classList.add("inner");
+
+  const frontIntro = document.createElement("div");
+  frontIntro.classList.add("front");
+  frontIntro.innerHTML = "💌<br>Gửi em";
+
+  const backIntro = document.createElement("div");
+  backIntro.classList.add("back");
+  backIntro.innerHTML = "Đọc đi 💗";
+
+  intro.onclick = () => {
+    intro.classList.add("open");
+    setTimeout(() => {
+      window.location.href = "start.html";
+    }, 600);
+  };
+
+  innerIntro.appendChild(frontIntro);
+  innerIntro.appendChild(backIntro);
+  intro.appendChild(innerIntro);
+  container.appendChild(intro);
+
+  // 🔥 DAY
   for (let i = 1; i <= total; i++) {
 
     const unlockStr = unlockDates[i];
@@ -129,7 +200,6 @@ function render(total) {
     const back = document.createElement("div");
     back.classList.add("back");
 
-    // 🔥 LOGIC
     if (!unlock) {
       front.innerHTML = `🔒 Day ${i}`;
       card.classList.add("locked");
