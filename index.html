@@ -11,7 +11,7 @@ body {
   background: #EAF4FB;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
-  color: #6B4F3A;
+  color: #5A6C7D;
 }
 
 .header {
@@ -68,10 +68,10 @@ body {
   font-size: 15px;
 }
 
-.front { background: #D6BFA9; }
+.front { background: #D6EAF8; }
 
 .back {
-  background: #A7C7E7;
+  background: #AED6F1;
   transform: rotateY(180deg);
 }
 
@@ -79,41 +79,41 @@ body {
   opacity: 0.5;
 }
 
-/* 🔥 INTRO SPECIAL - NÂU NHẠT */
+/* ❄️ INTRO SPECIAL - ICY BLUE */
 .intro-card {
   grid-column: span 3;
   animation: glow 2s infinite alternate;
 }
 
 .intro-card .inner {
-  height: 130px;
+  height: 115px; /* 👈 nhỏ lại xíu */
 }
 
 .intro-card .front {
-  background: linear-gradient(135deg, #EAD7C5, #F5E6DA);
-  font-size: 18px;
-  box-shadow: 0 0 15px rgba(165, 120, 90, 0.4);
+  background: linear-gradient(135deg, #DFF6FF, #F0FBFF);
+  font-size: 17px;
+  box-shadow: 0 0 12px rgba(173, 216, 230, 0.5);
   transition: all 0.3s ease;
 }
 
 .intro-card .back {
-  background: linear-gradient(135deg, #D6BFA9, #EAD7C5);
+  background: linear-gradient(135deg, #CDEBFF, #EAF6FF);
 }
 
-/* ✨ glow nâu */
+/* ✨ glow icy */
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px rgba(165,120,90,0.3);
+    box-shadow: 0 0 8px rgba(173,216,230,0.4);
   }
   to {
-    box-shadow: 0 0 20px rgba(165,120,90,0.7);
+    box-shadow: 0 0 18px rgba(173,216,230,0.9);
   }
 }
 
-/* 😏 hover */
+/* hover */
 .intro-card:hover .front {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(165,120,90,0.9);
+  transform: scale(1.04);
+  box-shadow: 0 0 22px rgba(173,216,230,1);
 }
 </style>
 </head>
@@ -152,7 +152,7 @@ const unlockDates = {
 function render(total) {
   const container = document.getElementById("cal");
 
-  // 💌 THƯ NGỎ
+  // 🎂 INTRO
   const intro = document.createElement("div");
   intro.classList.add("card", "intro-card");
 
@@ -161,11 +161,11 @@ function render(total) {
 
   const frontIntro = document.createElement("div");
   frontIntro.classList.add("front");
-  frontIntro.innerHTML = "💌<br>Ngày của Xịn nè";
+  frontIntro.innerHTML = "🎂<br>Ngày của Xịn";
 
   const backIntro = document.createElement("div");
   backIntro.classList.add("back");
-  backIntro.innerHTML = "Đọc đi 💗";
+  backIntro.innerHTML = "Mở nè 🎂";
 
   intro.onclick = () => {
     intro.classList.add("open");
@@ -179,7 +179,7 @@ function render(total) {
   intro.appendChild(innerIntro);
   container.appendChild(intro);
 
-  // 🔥 DAY
+  // DAY
   for (let i = 1; i <= total; i++) {
 
     const unlockStr = unlockDates[i];
