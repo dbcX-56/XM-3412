@@ -61,11 +61,12 @@
 
 <script>
   // 👉 TEST: để 2020 cho mở liền, sau này đổi lại ngày thật
-  const unlockDate = new Date("2226-06-08T00:00:00+07:00");
+  const unlockDate = new Date("2026-05-03T00:00:00+07:00");
   const now = new Date();
 
   if (now >= unlockDate) {
-    document.getElementById("content").innerText = `Em nhớ anh, rất nhiều.`;
+    document.getElementById("content").innerText = `Em nhớ anh. Hôm nay anh về trễ hơn mọi ngày, em đã từng thấy anh về rất sớm bây h cũng thấy anh về rất trễ. Vừa lo vì ko biết anh bận hoặc nhiều việc đến mức nào, có mệt lắm không, vừa sợ không biết anh bận hay anh đang chờ ai. 
+    Đúng là khó chịu thật, mọi snghi cứ hiện lên mà không có được câu trả lời cũng ko thể hỏi hay nói với anh. Vẫn là đến giờ, em ko tìm được cách`;
   } else {
     document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
   }
