@@ -7,12 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
 <style>
+
 body {
+  margin: 0;
+  padding: 0;
   background: #EAF4FB;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
   color: #6B4F3A;
 }
+
+/* HEADER */
 
 .header {
   display: flex;
@@ -27,7 +32,22 @@ body {
   margin: 12px auto;
 }
 
+p {
+  margin-top: 8px;
+}
+
+/* PAGE */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
 /* GRID */
+
 .calendar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -36,10 +56,12 @@ body {
   margin: 30px auto;
 }
 
+/* CARD */
+
 .card {
   perspective: 1000px;
   position: relative;
-  height: 110px;   /* 👈 THÊM DÒNG NÀY */
+  height: 110px;
 }
 
 .inner {
@@ -52,7 +74,8 @@ body {
   transform: rotateY(180deg);
 }
 
-.front, .back {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -65,25 +88,32 @@ body {
 
   backface-visibility: hidden;
   font-weight: bold;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
-/* 🤎 MÀU DAY */
+/* FRONT */
+
 .front {
   background: #D6BFA9;
 }
+
+/* BACK */
 
 .back {
   background: #A7C7E7;
   transform: rotateY(180deg);
 }
 
-/* 🔒 LOCK */
+/* LOCK */
+
 .card.locked .front {
   opacity: 0.5;
   filter: grayscale(30%);
 }
 
-/* 🎂 INTRO */
+/* INTRO */
+
 .intro-card {
   grid-column: span 3;
 }
@@ -97,13 +127,44 @@ body {
   box-shadow: 0 0 12px rgba(173,216,230,0.5);
 }
 
-.intro-card:hover .front {
-  transform: scale(1.04);
+/* BUTTONS */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
 }
+
+.controls button {
+  background: #A7C7E7;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: 'Quicksand';
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  transform: scale(1.05);
+}
+
+/* PAGE NUMBER */
+
+.page-number {
+  margin-top: -10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <div class="header">
   <h2>3412</h2>
@@ -114,78 +175,183 @@ body {
 
 <p>Mỗi ngày mở một cái nha... 💌</p>
 
-<div class="calendar" id="cal"></div>
+<!-- ================= PAGE 1 ================= -->
+
+<div class="page active" id="page1">
+
+  <div class="calendar" id="cal1"></div>
+
+  <div class="page-number">
+    Trang 1 / 2
+  </div>
+
+  <div class="controls">
+    <button onclick="showPage(2)">
+      ➜ Trang tiếp
+    </button>
+  </div>
+
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+
+<div class="page" id="page2">
+
+  <div class="calendar" id="cal2"></div>
+
+  <div class="page-number">
+    Trang 2 / 2
+  </div>
+
+  <div class="controls">
+    <button onclick="showPage(1)">
+      ⬅ Trang trước
+    </button>
+  </div>
+
+</div>
 
 <script>
+
 const today = new Date();
 
-// 👉 m có bao nhiêu ngày thì để đây
+/* NGÀY MỞ */
+
 const unlockDates = {
+
   1: "2026-03-01",
   2: "2026-03-05",
   3: "2026-03-10",
   4: "2026-03-20",
   5: "2026-03-30",
-  6: "2026-04-05"
+  6: "2026-04-05",
+  7: "2026-04-10",
+  8: "2026-04-15",
+  9: "2026-04-20",
+  10: "2026-04-25",
+  11: "2026-05-01",
+  12: "2026-05-05",
+
+  13: "2026-05-10",
+  14: "2026-05-15",
+  15: "2026-05-20",
+  16: "2026-05-25",
+  17: "2026-06-01",
+  18: "2026-06-05",
+  19: "2026-06-10",
+  20: "2026-06-15",
+  21: "2026-06-20",
+  22: "2026-06-25",
+  23: "2026-07-01",
+  24: "2026-07-05"
+
 };
 
-// 🔥 LUÔN RENDER 12 Ô
-function render() {
-  const container = document.getElementById("cal");
+/* ĐỔI PAGE */
 
-  // 🎂 INTRO
-  const intro = document.createElement("div");
-  intro.classList.add("card", "intro-card");
+function showPage(pageNum) {
 
-  intro.innerHTML = `
-    <div class="inner">
-      <div class="front">🎂<br>Ngày của Xịn nè</div>
-      <div class="back">Mở nè 🎂</div>
-    </div>
-  `;
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
 
-  intro.onclick = () => {
-    intro.classList.add("open");
-    setTimeout(() => {
-      window.location.href = "sinhnhatcuaXinne.html";
-    }, 600);
-  };
+  document.getElementById(`page${pageNum}`).classList.add("active");
 
-  container.appendChild(intro);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
-  // 🔥 12 Ô CỐ ĐỊNH
-  for (let i = 1; i <= 12; i++) {
+/* RENDER */
+
+function renderCalendar(containerId, startDay, endDay, addIntro = false) {
+
+  const container = document.getElementById(containerId);
+
+  /* INTRO */
+
+  if (addIntro) {
+
+    const intro = document.createElement("div");
+
+    intro.classList.add("card", "intro-card");
+
+    intro.innerHTML = `
+      <div class="inner">
+        <div class="front">
+          🎂<br>Ngày của Xịn nè
+        </div>
+
+        <div class="back">
+          Mở nè 🎂
+        </div>
+      </div>
+    `;
+
+    intro.onclick = () => {
+
+      intro.classList.add("open");
+
+      setTimeout(() => {
+        window.location.href = "sinhnhatcuaXinne.html";
+      }, 600);
+    };
+
+    container.appendChild(intro);
+  }
+
+  /* DAY */
+
+  for (let i = startDay; i <= endDay; i++) {
 
     const unlockStr = unlockDates[i];
-    const unlock = unlockStr ? new Date(unlockStr + "T00:00:00+07:00") : null;
+
+    const unlock = unlockStr
+      ? new Date(unlockStr + "T00:00:00+07:00")
+      : null;
 
     const card = document.createElement("div");
+
     card.classList.add("card");
 
-    // 🔒 nếu chưa có ngày hoặc chưa tới ngày
+    /* LOCK */
+
     if (!unlock || today < unlock) {
       card.classList.add("locked");
     }
 
     card.innerHTML = `
       <div class="inner">
+
         <div class="front">
-          ${unlock && today >= unlock ? "🔓" : "🔒"} Day ${i}
+          ${unlock && today >= unlock ? "🔓" : "🔒"}
+          <br>
+          Day ${i}
         </div>
-        <div class="back">💌<br>Mở</div>
+
+        <div class="back">
+          💌<br>Mở
+        </div>
+
       </div>
     `;
 
     card.onclick = () => {
+
       if (!unlock || today < unlock) {
+
         alert("⏳ Chưa tới ngày...");
+
         return;
       }
 
       card.classList.add("open");
 
       setTimeout(() => {
+
         window.location.href = `day${i}.html`;
+
       }, 600);
     };
 
@@ -193,7 +359,24 @@ function render() {
   }
 }
 
-render();
+/* PAGE 1 */
+
+renderCalendar(
+  "cal1",
+  1,
+  12,
+  true
+);
+
+/* PAGE 2 */
+
+renderCalendar(
+  "cal2",
+  13,
+  24,
+  false
+);
+
 </script>
 
 </body>
