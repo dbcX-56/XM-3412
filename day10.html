@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>For you</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #EAF4FB, #F6EFE7);
+      font-family: 'Quicksand', sans-serif;
+      color: #5A3E2B;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 30px auto 60px;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+      line-height: 1.85;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: pre-line;
+
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1.2s ease;
+      text-align: left;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="icon">💌</div>
+
+<div class="container" id="content"></div>
+
+<script>
+  const unlockDate = new Date("2226-05-08T00:00:00+07:00");
+  const now = new Date();
+
+  if (now >= unlockDate) {
+    document.getElementById("content").innerText = `Mọi thứ nặng nề quá, em thật sự ko thể làm dc gì ngoài việc ngồi đây và khóc.`;
+  } else {
+    document.getElementById("content").innerText = "💌 Chưa đến ngày mở...";
+  }
+</script>
+
+<!-- 🔥 tracking -->
+<script src="tracking.js"></script>
+
+</body>
+</html>
