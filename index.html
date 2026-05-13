@@ -1,3 +1,4 @@
+```html id="u0k8pn"
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -151,6 +152,16 @@ p {
   transform: scale(1.05);
 }
 
+/* ARROW */
+
+.arrow {
+  display: inline-block;
+}
+
+.arrow.back {
+  transform: scaleX(-1);
+}
+
 /* PAGE NUMBER */
 
 .page-number {
@@ -180,9 +191,10 @@ p {
 <div class="page active" id="page1">
 
   <div class="calendar" id="cal1"></div>
+
   <div class="controls">
     <button onclick="showPage(2)">
-      ➜ 
+      <span class="arrow">➜</span>
     </button>
   </div>
 
@@ -193,181 +205,12 @@ p {
 <div class="page" id="page2">
 
   <div class="calendar" id="cal2"></div>
+
   <div class="controls">
     <button onclick="showPage(1)">
-      ⬅ 
+      <span class="arrow back">➜</span>
     </button>
   </div>
 
 </div>
-
-<script>
-
-const today = new Date();
-
-/* NGÀY MỞ */
-
-const unlockDates = {
-
-  1: "2026-03-01",
-  2: "2026-03-05",
-  3: "2026-03-10",
-  4: "2026-03-20",
-  5: "2026-03-30",
-  6: "2026-04-05",
-  7: "2026-04-10",
-  8: "2026-04-15",
-  9: "2026-04-20",
-  10: "2026-04-25",
-  11: "2026-05-01",
-  12: "2026-05-05",
-
-  13: "2026-05-10",
-  14: "2026-05-15",
-  15: "2026-05-20",
-  16: "2026-05-25",
-  17: "2026-06-01",
-  18: "2026-06-05",
-  19: "2026-06-10",
-  20: "2026-06-15",
-  21: "2026-06-20",
-  22: "2026-06-25",
-  23: "2026-07-01",
-  24: "2026-07-05"
-
-};
-
-/* ĐỔI PAGE */
-
-function showPage(pageNum) {
-
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.remove("active");
-  });
-
-  document.getElementById(`page${pageNum}`).classList.add("active");
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
-/* RENDER */
-
-function renderCalendar(containerId, startDay, endDay, addIntro = false) {
-
-  const container = document.getElementById(containerId);
-
-  /* INTRO */
-
-  if (addIntro) {
-
-    const intro = document.createElement("div");
-
-    intro.classList.add("card", "intro-card");
-
-    intro.innerHTML = `
-      <div class="inner">
-        <div class="front">
-          🎂<br>Ngày của Xịn nè
-        </div>
-
-        <div class="back">
-          Mở nè 🎂
-        </div>
-      </div>
-    `;
-
-    intro.onclick = () => {
-
-      intro.classList.add("open");
-
-      setTimeout(() => {
-        window.location.href = "sinhnhatcuaXinne.html";
-      }, 600);
-    };
-
-    container.appendChild(intro);
-  }
-
-  /* DAY */
-
-  for (let i = startDay; i <= endDay; i++) {
-
-    const unlockStr = unlockDates[i];
-
-    const unlock = unlockStr
-      ? new Date(unlockStr + "T00:00:00+07:00")
-      : null;
-
-    const card = document.createElement("div");
-
-    card.classList.add("card");
-
-    /* LOCK */
-
-    if (!unlock || today < unlock) {
-      card.classList.add("locked");
-    }
-
-    card.innerHTML = `
-      <div class="inner">
-
-        <div class="front">
-          ${unlock && today >= unlock ? "🔓" : "🔒"}
-          <br>
-          Day ${i}
-        </div>
-
-        <div class="back">
-          💌<br>Mở
-        </div>
-
-      </div>
-    `;
-
-    card.onclick = () => {
-
-      if (!unlock || today < unlock) {
-
-        alert("⏳ Chưa tới ngày...");
-
-        return;
-      }
-
-      card.classList.add("open");
-
-      setTimeout(() => {
-
-        window.location.href = `day${i}.html`;
-
-      }, 600);
-    };
-
-    container.appendChild(card);
-  }
-}
-
-/* PAGE 1 */
-
-renderCalendar(
-  "cal1",
-  1,
-  12,
-  true
-);
-
-/* PAGE 2 */
-
-renderCalendar(
-  "cal2",
-  13,
-  24,
-  false
-);
-
-</script>
-
-</body>
-</html>
+```
