@@ -209,10 +209,24 @@ p {
     <button onclick="showPage(1)">
       <span class="arrow arrow-left">➜</span>
     </button>
+
+    <button onclick="showPage(3)">
+      <span class="arrow">➜</span>
+    </button>
   </div>
 
 </div>
+<div class="page" id="page3">
 
+  <div class="calendar" id="cal3"></div>
+
+  <div class="controls">
+    <button onclick="showPage(2)">
+      <span class="arrow arrow-left">➜</span>
+    </button>
+  </div>
+
+</div>
 <script>
 
 const today = new Date();
@@ -246,6 +260,19 @@ const unlockDates = {
   22: "2026-06-25",
   23: "2026-07-01",
   24: "2026-07-05"
+
+  25: "2026-07-10",
+  26: "2026-07-15",
+  27: "2026-07-20",
+  28: "2026-07-25",
+  29: "2026-08-01",
+  30: "2026-08-05",
+  31: "2026-08-10",
+  32: "2026-08-15",
+  33: "2026-08-20",
+  34: "2026-08-25",
+  35: "2026-09-01",
+  36: "2026-09-05 
 
 };
 
@@ -363,6 +390,8 @@ function renderCalendar(containerId, startDay, endDay, addIntro = false) {
 
 /* PAGE 1 */
 
+/* PAGE 1 */
+
 renderCalendar(
   "cal1",
   1,
@@ -379,7 +408,12 @@ renderCalendar(
   false
 );
 
-</script>
+/* PAGE 3 */
 
-</body>
+renderCalendar(
+  "cal3",
+  25,
+  36,
+  false
+);
 </html>
